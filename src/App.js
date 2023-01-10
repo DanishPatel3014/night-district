@@ -4,18 +4,30 @@ import { extendTheme } from "@chakra-ui/react"
 import AppRoute from './routes/Route';
 import { loadUser } from './reducers/useReducers'
 import { useDispatch } from 'react-redux'
+import './assets/css/Main.css'
 import Cookies from 'js-cookie'
 
 function App() {
 
   const theme = extendTheme({
     colors: {
-      primaryBlack: {
-        100: '#1a1a1a',
+      brand: {
+        900: '#1a365d',
+        800: '#153e75',
+        700: '#2a69ac',
       },
-      primaryGreen: {
-        100: '#0bd46e',
-      }
+      primaryHeading: {
+        100: '#dc0b9b',
+      },
+      primaryText: {
+        100: '#dc0b9b',
+        200: '#7a7f83',
+        300: '#808080',
+        400: '#666e82'
+      },
+      primaryBgDarkBlue: {
+        100: '#dc0b9b'
+      },
     },
   });
 

@@ -1,5 +1,5 @@
 import { Stack, Text } from "@chakra-ui/react";
-
+import Header from '../../components/Website/Header'
 export default function Home() {
 
   return (
@@ -14,7 +14,9 @@ export default function Home() {
       >
         <Text
           fontSize={38}
-        >Let's Start Something Awesome!</Text>
+        >
+         
+          Let's Start Something Awesome!</Text>
     </Stack>
   );
 }

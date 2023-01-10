@@ -1,7 +1,10 @@
-import { Stack } from '@chakra-ui/react'
+import { Stack, Text } from '@chakra-ui/react'
+import WithSubnavigation from './NavBar'
 
 export default function Index() {
   return (
-    <Stack>Header Component</Stack>
+    <Stack>
+      <WithSubnavigation/>
+    </Stack>
   )
 }
