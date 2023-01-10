@@ -1,1 +1,117 @@
-.bgText{background: url(../images/bg.jpg) no-repeat;background-position: center center;background-color: #464646;background-size: cover;background-clip: text;color: transparent;}
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@100;200;300;400;500;600;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@100;200;300;400;500;600;700;800;900');
+@import url('https://fonts.googleapis.com/css2?family=Lato:wght@100;300;400;700;900&display=swap');
+
+body {
+
+  font-family: 'Poppins', sans-serif !important;
+}
+p
+{
+  font-family: lato;
+}
+::-webkit-scrollbar {
+  width: 3px;
+  height: 3px;
+}
+
+::-webkit-scrollbar-button {
+  width: 0px;
+  height: 0px;
+}
+
+::-webkit-scrollbar-thumb {
+  background: #dc0b9b;
+  border: 0px none transparent;
+  border-radius: 0px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: #ef5727;
+}
+
+::-webkit-scrollbar-thumb:active {
+  background: #ef5727;
+}
+
+::-webkit-scrollbar-track {
+  background: transparent;
+  border: 0px none transparent;
+  border-radius: 0px;
+}
+
+::-webkit-scrollbar-track:hover {
+  background: transparent;
+}
+
+::-webkit-scrollbar-track:active {
+  background: transparent;
+}
+
+::-webkit-scrollbar-corner {
+  background: transparent;
+}
+
+a {
+  text-decoration: none !important;
+}
+
+/* /Select/ */
+
+/* / Footer / */
+
+.footerLinks a {
+  width: fit-content;
+  position: relative;
+}
+
+.footerLinks a::before {
+  transition: .3s;
+  content: '';
+  position: absolute;
+  top: 50%;
+  left: -25px;
+  transform: translate(0, -50%);
+  background-color: #a6a6a6;
+  width: 8px;
+  height: 8px;
+  border-radius: 100%;
+}
+
+.footerLinks a:hover::before {
+  background-color: #f79e22;
+}
+
+.footerLinks a:hover {
+  color: #f79e22;
+}
+
+.customRadio label span::before {
+  background-color: #38a169 !important;
+}
+
+.verified::before {
+  background-color: #f79e22 !important;
+}
+
+.directorBlock:hover p {
+  height: 150px;
+  overflow: auto;
+}
+input, select{border-color: #000 !important;}
+/* @media (max-width: 767px) {
+  .footerLinks a{font-size: 14px;margin-top: 10px !important;}
+
+@media (max-width: 1440px)
+{
+  
+}
+
+@media (max-width: 1024px){
+	
+}
+
+@media (max-width:1200px){
+
+
+} */
