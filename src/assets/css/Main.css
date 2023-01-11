@@ -1,15 +1,11 @@
-@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@100;200;300;400;500;600;700&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@100;200;300;400;500;600;700;800;900');
-@import url('https://fonts.googleapis.com/css2?family=Lato:wght@100;300;400;700;900&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Nunito+Sans:ital,wght@0,200;0,300;0,400;0,600;1,200;1,300;1,400&display=swap');
 
 body {
 
-  font-family: 'Poppins', sans-serif !important;
+    font-family: 'Nunito Sans', sans-serif  !important;
 }
-p
-{
-  font-family: lato;
-}
+
 ::-webkit-scrollbar {
   width: 3px;
   height: 3px;
