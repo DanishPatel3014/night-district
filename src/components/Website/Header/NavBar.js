@@ -55,15 +55,15 @@ import {
   
   
     return (
-      <Box w={'full'} id='Header'>
+      <Box w={'full'} id='Header' position={'fixed'} top={'0'} zIndex={'1'}>
        
   
         <Stack
           direction={'row'}
-          bg={useColorModeValue('#000', 'gray.800')}
+          bg={useColorModeValue('#0006', 'gray.800')}
           color={useColorModeValue('gray.600', 'white')}
           minH={'60px'}
-          py={{ base: 4, md: 6 }}
+          py={{ base: 4, md: 3 }}
           px={{ base: 4, md: 30 }}
           boxShadow={'base'}
           align={'center'}
@@ -102,45 +102,7 @@ import {
             justify={'flex-end'}
             direction={'row'}
             spacing={6}>
-            {
-              (user === undefined || user === null) ?
-                <>
-                  <Button
-                    _hover={{
-                      color: 'primaryHeading.100',
-                      _before: {
-                        transform: 'scaleX(1)',
-                        transformOrigin: 'bottom left',
-                      }
-                    }}
-                    _before={{
-                      content: `""`,
-                      position: 'absolute',
-                      w: '100%',
-                      h: '3px',
-                      transform: 'scaleX(0)',
-                      bottom: '-2px',
-                      left: '0px',
-                      borderRadius: '25px',
-                      backgroundColor: "primaryHeading.100",
-                      transformOrigin: 'bottom right',
-                      transition: 'transform 0.3s ease-in-out'
-                    }}
-                    as={ReactLink}
-                    fontSize={{ base: '13px', xl: '17px' }}
-                    fontWeight={500}
-                    variant={'link'}
-                    color={'$666e82'}
-                    to={'/login'}>
-                    Login
-                  </Button>
-                  <Link w={{ base: '120px', xl: 'auto' }} display={{ base: 'none', lg: 'flex' }} onClick={() => navigate('/register')}><PrimaryBtn value={'Get Started'} /></Link>
-                </>
-                :
-                <></>
-                // <LoggedInPic />
-  
-            }
+           <Link w={{ base: '120px', xl: 'auto' }} display={{ base: 'none', lg: 'flex' }} onClick={() => navigate('/register')}><PrimaryBtn value={'Get Started'} /></Link>
   
           </Stack>
         </Stack>
@@ -173,7 +135,7 @@ import {
                   color={linkColor}
                   transition={'0.3s ease-in-out'}
                   position={'relative'}
-                  fontFamily= {'lato'}
+                  fontFamily= {'Nunito Sans'}
                   _hover={{
                     color: 'primaryHeading.100',
                     _before: {

@@ -14,7 +14,7 @@ export default function PrimaryBtn(props) {
             fontWeight={600}
             size={{base:'sm',md:'md',lg:'lg'}}
             color={'white'}
-            bg={'#f79e22'}
+            bg={'#dc0b9b'}
             href={'#'}
             boxShadow={`0px 15px 15px -15px ${props?.shadow ?? 'transparent'}`}
             _hover={{
