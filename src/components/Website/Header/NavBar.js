@@ -60,7 +60,7 @@ import {
   
         <Stack
           direction={'row'}
-          bg={useColorModeValue('#0006', 'gray.800')}
+          bg={useColorModeValue('#000000cf', 'gray.800')}
           color={useColorModeValue('gray.600', 'white')}
           minH={'60px'}
           py={{ base: 4, md: 3 }}
