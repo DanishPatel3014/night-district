@@ -16,7 +16,7 @@ function App() {
         800: '#153e75',
         700: '#2a69ac',
       },
-      primaryHeading: {
+      pHeading: {
         100: '#dc0b9b',
       },
       primaryText: {
