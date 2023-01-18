@@ -7,7 +7,7 @@ export default function CustomHeading({ children, fontSize, fontFamily, textAlig
       fontSize={fontSize ?? '55px'}
       fontWeight={fontWeight ?? '500'}
       textAlign={textAlign ?? 'center'}
-      mb={'10px'}
+      mb={mb ?? '10px'}
       color={color ?? 'pHeading.100'}
       fontFamily={fontFamily ?? 'Nunito Sans'} 
     >
