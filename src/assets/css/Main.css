@@ -4,6 +4,7 @@
 body {
 
     font-family: 'Nunito Sans', sans-serif  !important;
+    background-color: #1a1a1a !important;
 }
 
 ::-webkit-scrollbar {
@@ -95,6 +96,10 @@ a {
   overflow: auto;
 }
 input, select{border-color: #000 !important;}
+.ftlinks
+{
+  list-style: none;
+}
 /* @media (max-width: 767px) {
   .footerLinks a{font-size: 14px;margin-top: 10px !important;}
 

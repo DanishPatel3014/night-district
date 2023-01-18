@@ -35,7 +35,8 @@ import {
   import { useSelector } from 'react-redux';
 //   import LoggedInPic from '../LoggedInPic';
   import { useEffect } from 'react';
-  
+import { NAV_ITEMS } from '../../../utilities/navigationLinks';
+
   export default function WithSubnavigation() {
     const navigate = useNavigate();
     const { isOpen, onToggle } = useDisclosure();
@@ -287,36 +288,4 @@ import {
     children?: Array<NavItem>;
     href?: string;
   }
-  
-  const NAV_ITEMS: Array<NavItem> = [
-    {
-      label: 'Home',
-      href: './',
-    },
-    {
-        label: 'About Us',
-        href: './',
-      },
-    
-    {
-      label: 'Subscribe',
-      href: './',
-    },
-    {
-      label: 'Features',
-      href: './',
-    },
-   
-    {
-      label: 'Bars',
-      href: './',
-    },
-    {
-      label: 'Reviews',
-      href: './',
-    },
-    {
-        label: 'Contact Us',
-        href: './',
-      },
-  ];
+ 
