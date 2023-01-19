@@ -8,6 +8,7 @@ import f4 from '../../../assets/images/shorts/f4.jpg';
 import CustomHeading from '../Headings/CustomHeading';
 import CustomPara from '../Paragraph/CustomPara';
 import { Link as ReactLink } from 'react-router-dom';
+import FeaturedBar from './FeaturedBar';
 
 export default function Featured() {
   return (
@@ -46,22 +47,8 @@ export default function Featured() {
             </Stack>
           </Stack>
           <Stack direction={'row'} gap={'6'}>
-            <Box>
-              <Image src={f1} mb={'3'} borderRadius={'6'} />
-              <CustomHeading fontSize={'20px'} textAlign={'left'}>New Amsterdam Club</CustomHeading>
-            </Box>
-            <Box>
-              <Image src={f2} mb={'3'} borderRadius={'6'} />
-              <CustomHeading fontSize={'20px'} textAlign={'left'}>Paradise Club</CustomHeading>
-            </Box>
-            <Box>
-              <Image src={f3} mb={'3'} borderRadius={'6'} />
-              <CustomHeading fontSize={'20px'} textAlign={'left'}>The Carnegie Club</CustomHeading>
-            </Box>
-            <Box>
-              <Image src={f4} mb={'3'} borderRadius={'6'} />
-              <CustomHeading fontSize={'20px'} textAlign={'left'}>Gold Bar</CustomHeading>
-            </Box>
+            <FeaturedBar/>
+           
           </Stack>
         </Container>
       </Stack>

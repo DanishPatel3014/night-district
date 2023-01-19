@@ -23,7 +23,7 @@ export default function index() {
           p={{ base: '15px !important', '2xl': 0 }}
         >
             <Stack>
-                <Box mb={'10'}><CustomHeading  fontSize={'35px'}>Top Rated Bars</CustomHeading></Box>
+                <Box mb={'10'}><CustomHeading  >Top Rated Bars</CustomHeading></Box>
                 <Stack direction={'row'} gap={'4'}>
                   <TopBars/>
                     <Box w={'165px'} >
