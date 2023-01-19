@@ -25,6 +25,10 @@ function App() {
         300: '#808080',
         400: '#666e82'
       },
+      primaryHeading: {
+        100: '#dc0b9b',
+        
+      },
       primaryBgDarkBlue: {
         100: '#dc0b9b'
       },

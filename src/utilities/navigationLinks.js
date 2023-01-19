@@ -5,7 +5,7 @@ export const NAV_ITEMS: Array<NavItem> = [
     },
     {
         label: 'About Us',
-        href: './',
+        href: '/AboutUs',
       },
     
     {
@@ -19,14 +19,14 @@ export const NAV_ITEMS: Array<NavItem> = [
    
     {
       label: 'Bars',
-      href: './',
+      href: '/Bars',
     },
     {
       label: 'Reviews',
-      href: './',
+      href: '/Reviews',
     },
     {
         label: 'Contact Us',
-        href: './',
+        href: '/ContactUs',
       },
   ];
