@@ -4,7 +4,7 @@ import React from 'react';
 export default function CustomHeading({ children, fontSize, fontFamily, textAlign, color, fontWeight,mb }) {
   return (
     <Heading
-      fontSize={fontSize ?? '55px'}
+      fontSize={fontSize ?? '45px'}
       fontWeight={fontWeight ?? '500'}
       textAlign={textAlign ?? 'center'}
       mb={mb ?? '10px'}
