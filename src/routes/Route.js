@@ -9,6 +9,7 @@ import NotFound from '../views/NotFound'
 import Header from '../components/Website/Header';
 import Footer from '../components/Website/Footer';
 import Bars from '../views/Website/Bars';
+import StoreProfile from '../views/Website/StoreProfile';
 
 
 export const UserContext = createContext()
@@ -25,6 +26,7 @@ export default function AppRoute() {
                     <Route exact path="/ContactUs" element={<ContactUs />}></Route>
                     <Route exact path="/Reviews" element={<Reviews />}></Route>
                     <Route exact path="/Bars" element={<Bars />}></Route>
+                    <Route exact path="/StoreProfile" element={<StoreProfile />}></Route>
                     <Route exact path="*" element={<NotFound />}></Route>
                 </RouteSwitch>
                 <Footer />

@@ -13,7 +13,7 @@ export default function FeaturedBar() {
           <CustomHeading fontSize={'20px'} textAlign={'left'}>
             New Amsterdam Club
           </CustomHeading>
-          <Link to={'/'} color={'#fff'}>
+          <Link as={ReactLink} to={'/StoreProfile'} color={'#fff'}>
             View Store
           </Link>
         </Box>
