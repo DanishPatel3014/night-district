@@ -54,7 +54,19 @@ a {
 }
 
 /* /Select/ */
-
+ul.listhow
+{
+  display: block;
+}
+ul.listhow>li
+{
+color: #fff;
+margin-bottom: 10px;
+}
+ul.listhow>li::marker
+{
+  color: #dc0b9b;
+}
 /* / Footer / */
 
 .footerLinks a {

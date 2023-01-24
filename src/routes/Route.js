@@ -10,11 +10,17 @@ import Header from '../components/Website/Header';
 import Footer from '../components/Website/Footer';
 import Bars from '../views/Website/Bars';
 import StoreProfile from '../views/Website/StoreProfile';
+import BarOwner from '../views/Website/BarOwner';
+import { useEffect } from 'react';
+
 
 
 export const UserContext = createContext()
 
 export default function AppRoute() {
+
+
+    
 
     return (
         <div>
@@ -27,6 +33,7 @@ export default function AppRoute() {
                     <Route exact path="/Reviews" element={<Reviews />}></Route>
                     <Route exact path="/Bars" element={<Bars />}></Route>
                     <Route exact path="/StoreProfile" element={<StoreProfile />}></Route>
+                    <Route exact path="/BarOwner" element={<BarOwner />}></Route>
                     <Route exact path="*" element={<NotFound />}></Route>
                 </RouteSwitch>
                 <Footer />
