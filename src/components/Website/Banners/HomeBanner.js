@@ -5,7 +5,8 @@ import Homebanner from '../../../assets/images/Banner/homebanner.jpg'
 import { BiPlay } from 'react-icons/bi'
 import { Icon } from '@chakra-ui/icons';
 
-export default function HomeBanner() {
+export default function HomeBanner({MainHeading,Mainpara}) {
+   
     return (
         <div>
             <Stack
@@ -35,15 +36,12 @@ export default function HomeBanner() {
                                     color={'white'}
                                     fontFamily={'Nunito Sans'}
                                 >
-                                    Allow Guests to
-                                    View Your Menu
-                                    & Pay from Their
-                                    Phone
+                                    {MainHeading}
+                                  
                                 </Heading>
 
-                                <Text fontSize={{ base: '14px', md: '14px', lg: '18px' }} fontWeight={'500'} color={'white'} lineHeight={{ md: '30px', base: '23px' }}>
-                                    Rem ipsum dolor sit amet, consectetur adipisicing elit, sed <br />
-                                    do eiusmod  idunt ut labore et dolore magna aliqua.
+                                <Text pr={'20%'} fontSize={{ base: '14px', md: '14px', lg: '18px' }} fontWeight={'500'} color={'white'} lineHeight={{ md: '30px', base: '23px' }}>
+                                    {Mainpara}
                                 </Text>
 
                             </Stack>

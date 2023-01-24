@@ -3,6 +3,7 @@ import React from 'react';
 import CustomHeading from '../Headings/CustomHeading';
 import CustomPara from '../Paragraph/CustomPara';
 import Sub from '../../../assets/images/Banner/sub.jpg';
+import { Link as ReactLink } from 'react-router-dom';
 
 export default function Subscribe() {
   return (
@@ -53,7 +54,7 @@ export default function Subscribe() {
               <br />
               nisi ut aliquip ex ea commodo consequat.
             </CustomPara>
-            <Link textAlign={'center'} margin={'auto'}
+            <Link as={ReactLink} textAlign={'center'} margin={'auto'} to={'/BarOwner'}
             p={'10px'}
             w={'150px'}
             border={'1px solid #fff'}

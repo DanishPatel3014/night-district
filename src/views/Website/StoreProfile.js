@@ -4,10 +4,17 @@ import InerBannner from '../../components/Website/Banners/InerBannner';
 import StoreDetails from '../../components/Website/Store/StoreDetails';
 import Aboutbanner from '../../assets/images/Banner/about.png';
 import StoreEvent from '../../components/Website/Store/StoreEvent';
-import CustomHeading from '../../components/Website/Headings/CustomHeading';
-import CustomPara from '../../components/Website/Paragraph/CustomPara';
+import { useEffect } from 'react';
 
 export default function StoreProfile() {
+
+  useEffect(() => {
+    window.scrollTo({
+      top: 0,
+      behavior: 'smooth',
+    });
+  }, [])
+
   return (
     <>
       <InerBannner simpleHeading={'Store Details'} />
