@@ -19,7 +19,7 @@ export default function Index() {
   const linkHoverColor = useColorModeValue('gray.800', 'white');
   return (
     <>
-      <Stack bg={'#000'} pt={'20'} pb={'7'}>
+      <Stack id='Footer' bg={'#000'} pt={'20'} pb={'7'}>
         <Container maxW={'6xl'} p={{ base: '15px !important', '2xl': 0 }}>
           <Stack textAlign={'center'}>
             <Image src={logo} w={'120px'} m={'auto'} mb={'10'}  />

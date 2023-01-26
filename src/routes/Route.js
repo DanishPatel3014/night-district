@@ -11,6 +11,7 @@ import Footer from '../components/Website/Footer';
 import Bars from '../views/Website/Bars';
 import StoreProfile from '../views/Website/StoreProfile';
 import BarOwner from '../views/Website/BarOwner';
+import Dashboard from '../views/Dashboard/Home/index.js'
 import { useEffect } from 'react';
 
 
@@ -27,6 +28,9 @@ export default function AppRoute() {
             <Router>
                 <Header />
                 <RouteSwitch>
+
+                    {/* Website-Routes */}
+
                     <Route exact path="/" element={<Home />}></Route>
                     <Route exact path="/AboutUs" element={<AboutUs />}></Route>
                     <Route exact path="/ContactUs" element={<ContactUs />}></Route>
@@ -34,6 +38,17 @@ export default function AppRoute() {
                     <Route exact path="/Bars" element={<Bars />}></Route>
                     <Route exact path="/StoreProfile" element={<StoreProfile />}></Route>
                     <Route exact path="/BarOwner" element={<BarOwner />}></Route>
+
+
+                    {/* Website-Routes */}
+
+
+                    {/* Dashboard-Routes */}
+                    
+                    <Route exact path="/dashboard" element={<Dashboard />}></Route>
+
+
+                    {/* Dashboard-Routes */}
                     <Route exact path="*" element={<NotFound />}></Route>
                 </RouteSwitch>
                 <Footer />
