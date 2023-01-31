@@ -2,8 +2,9 @@ import { Box, Stack } from '@chakra-ui/react';
 import React from 'react';
 import MainDashboard from '../MainDashboard';
 import CustomHeading from '../../../components/Website/Headings/CustomHeading';
-import OrderBox from '../../../components/Order/OrderBox';
-import OrderSalesCharts from '../../../components/Order/OrderSalesCharts';
+import OrderBox from '../../../components/Dashboard/Order/OrderBox';
+import OrderSalesCharts from '../../../components/Dashboard/Order/OrderSalesCharts';
+import NightlyReports from '../../../components/Dashboard/Order/NightlyReports';
 
 export default function Index() {
   return (
@@ -22,8 +23,10 @@ export default function Index() {
             <OrderBox />
             <OrderBox />
           </Stack>
-          <Stack direction={'row'} justifyContent={'space-between'}>
-            <Box w={'800px'} height={'600px'}></Box>
+          <Stack direction={'row'} alignItems={'flex-end'} justifyContent={'space-between'}>
+            <Box>
+              <NightlyReports/>
+            </Box>
             <Box w={'50%'}>
               <OrderSalesCharts />
             </Box>

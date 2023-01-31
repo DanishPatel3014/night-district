@@ -12,6 +12,7 @@ import Bars from '../views/Website/Bars';
 import StoreProfile from '../views/Website/StoreProfile';
 import BarOwner from '../views/Website/BarOwner';
 import Dashboard from '../views/Dashboard/Home/index.js'
+import Menu from '../views/Dashboard/Menu/index.js';
 import { useEffect } from 'react';
 
 
@@ -46,6 +47,7 @@ export default function AppRoute() {
                     {/* Dashboard-Routes */}
                     
                     <Route exact path="/dashboard" element={<Dashboard />}></Route>
+                    <Route exact path="/dashboard/menu" element={<Menu />}></Route>
 
 
                     {/* Dashboard-Routes */}

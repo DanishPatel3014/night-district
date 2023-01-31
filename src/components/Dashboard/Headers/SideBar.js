@@ -35,16 +35,25 @@ import {
   FiBell,
   FiChevronDown,
 } from 'react-icons/fi';
+import { AiOutlineDollar } from 'react-icons/ai';
+import { Link as Reactlink } from 'react-router-dom';
 import { IconType } from 'react-icons';
 import { ReactText } from 'react';
 import logo from '../../../assets/images/logo/logo2.png';
 
 const LinkItems = [
-  { name: 'Home', icon: FiHome },
-  { name: 'Trending', icon: FiTrendingUp },
-  { name: 'Explore', icon: FiCompass },
-  { name: 'Favourites', icon: FiStar },
-  { name: 'Settings', icon: FiSettings },
+  { name: 'Home', icon: FiHome, url: '/dashboard' },
+  { name: 'Menu', icon: FiTrendingUp, url: '/dashboard/menu' },
+  { name: 'SubScription', icon: AiOutlineDollar },
+  { name: 'Event', icon: FiStar },
+  { name: 'Order', icon: FiSettings },
+  { name: 'Feed', icon: FiHome },
+  { name: 'Analytics', icon: FiTrendingUp },
+  { name: 'promotions', icon: FiCompass },
+  { name: 'Settings', icon: FiStar },
+  { name: 'Team Members', icon: FiSettings },
+  { name: 'About', icon: FiStar },
+  { name: 'Contact Us', icon: FiSettings },
 ];
 
 export default function SidebarWithHeader({ children, title }) {
@@ -102,7 +111,7 @@ const SidebarContent = ({ onClose, ...rest }) => {
         />
       </Flex>
       {LinkItems.map(link => (
-        <NavItem key={link.name} icon={link.icon}>
+        <NavItem key={link.name} icon={link.icon} url={link.url}>
           {link.name}
         </NavItem>
       ))}
@@ -110,10 +119,11 @@ const SidebarContent = ({ onClose, ...rest }) => {
   );
 };
 
-const NavItem = ({ icon, children, ...rest }) => {
+const NavItem = ({ icon, url, children, ...rest }) => {
   return (
     <Link
-      href="#"
+      as={Reactlink}
+      to={url ?? ''}
       style={{ textDecoration: 'none' }}
       _focus={{ boxShadow: 'none' }}
     >
@@ -126,7 +136,7 @@ const NavItem = ({ icon, children, ...rest }) => {
         role="group"
         cursor="pointer"
         _hover={{
-          bg: 'cyan.400',
+          bg: 'pHeading.100',
           color: 'white',
         }}
         {...rest}
@@ -151,7 +161,9 @@ const NavItem = ({ icon, children, ...rest }) => {
 const MobileNav = ({ onOpen, title, ...rest }) => {
   return (
     <Flex
-      ml={{ base: 0, md: 60 }}
+      ml={{ base: 0, md: '270px' }}
+      mr={{ base: 0, md: 30 }}
+      mt={{ base: 0, md: 6 }}
       px={{ base: 4, md: 4 }}
       height="20"
       alignItems="center"
@@ -173,10 +185,11 @@ const MobileNav = ({ onOpen, title, ...rest }) => {
       <Image display={{ base: 'flex', md: 'none' }} w={'80px'} src={logo} />
 
       <HStack spacing={{ base: '0', md: '6' }}>
-        {/* <Stack>
-          <Heading>{title}</Heading>
-        </Stack> */}
-        <Stack direction={'row'} spacing={{ base: '0', md: '6' }} alignItems={'center'}>
+        <Stack
+          direction={'row'}
+          spacing={{ base: '0', md: '6' }}
+          alignItems={'center'}
+        >
           <IconButton
             size="lg"
             variant="ghost"
