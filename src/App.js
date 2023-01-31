@@ -16,8 +16,12 @@ function App() {
     colors: {
       brand: {
         900: '#1a365d',
-        800: '#153e75',
+        800: '#7a7a7a',
         700: '#2a69ac',
+      },
+      dashbg:
+      {
+        100:'#212121'
       },
       pHeading: {
         100: '#dc0b9b',

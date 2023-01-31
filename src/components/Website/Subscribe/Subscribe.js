@@ -4,6 +4,7 @@ import CustomHeading from '../Headings/CustomHeading';
 import CustomPara from '../Paragraph/CustomPara';
 import Sub from '../../../assets/images/Banner/sub.jpg';
 import { Link as ReactLink } from 'react-router-dom';
+import BorderButton from '../Buttons/BorderButton';
 
 export default function Subscribe() {
   return (
@@ -23,14 +24,7 @@ export default function Subscribe() {
               <br />
               nisi ut aliquip ex ea commodo consequat.
             </CustomPara>
-            <Link textAlign={'center'} margin={'auto'}
-            p={'10px'}
-            w={'150px'}
-            border={'1px solid #fff'}
-            borderRadius={'6px'}
-            color={'#fff'}
-            display={"block"}
-            >Find Now</Link>
+           <BorderButton Url={'/'} Btnctn={'Find Now'} />
           </Box>
         </Box>
         <Box
@@ -54,14 +48,7 @@ export default function Subscribe() {
               <br />
               nisi ut aliquip ex ea commodo consequat.
             </CustomPara>
-            <Link as={ReactLink} textAlign={'center'} margin={'auto'} to={'/BarOwner'}
-            p={'10px'}
-            w={'150px'}
-            border={'1px solid #fff'}
-            borderRadius={'6px'}
-            color={'#fff'}
-            display={"block"}
-            >Subscribe</Link>
+            <BorderButton Url={'/BarOwner'}  Btnctn={'Subscribe'} />
           </Box>
         </Box>
       </Stack>
