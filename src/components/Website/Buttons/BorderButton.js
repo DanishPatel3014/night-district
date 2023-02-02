@@ -2,7 +2,7 @@ import { Link } from '@chakra-ui/react';
 import React from 'react';
 import { Link as ReactLink } from 'react-router-dom';
 
-export default function BorderButton({ Btnctn, Url }) {
+export default function BorderButton({ Btnctn, Url ,w}) {
   return (
     <>
       <Link
@@ -12,7 +12,7 @@ export default function BorderButton({ Btnctn, Url }) {
         to={Url}
         py={'10px'}
         px={'4'}
-        w={'fit-content'}
+        w={w ?? 'fit-content'}
         lineHeight={'inherit'}
         border={'1px solid #fff'}
         borderRadius={'6px'}
