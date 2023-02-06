@@ -13,6 +13,9 @@ import StoreProfile from '../views/Website/StoreProfile';
 import BarOwner from '../views/Website/BarOwner';
 import Dashboard from '../views/Dashboard/Home/index.js'
 import Menu from '../views/Dashboard/Menu/index.js';
+import Subscription  from '../views/Dashboard/Subscription/index.js';
+import Event  from '../views/Dashboard/Event/index.js';
+import Feed  from '../views/Dashboard/Feed/index.js';
 import { useEffect } from 'react';
 
 
@@ -48,6 +51,9 @@ export default function AppRoute() {
                     
                     <Route exact path="/dashboard" element={<Dashboard />}></Route>
                     <Route exact path="/dashboard/menu" element={<Menu />}></Route>
+                    <Route exact path="/dashboard/subscription" element={<Subscription />}></Route>
+                    <Route exact path="/dashboard/event" element={<Event />}></Route>
+                    <Route exact path="/dashboard/feed" element={<Feed />}></Route>
 
 
                     {/* Dashboard-Routes */}

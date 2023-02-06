@@ -44,10 +44,9 @@ import logo from '../../../assets/images/logo/logo2.png';
 const LinkItems = [
   { name: 'Home', icon: FiHome, url: '/dashboard' },
   { name: 'Menu', icon: FiTrendingUp, url: '/dashboard/menu' },
-  { name: 'SubScription', icon: AiOutlineDollar },
-  { name: 'Event', icon: FiStar },
-  { name: 'Order', icon: FiSettings },
-  { name: 'Feed', icon: FiHome },
+  { name: 'SubScription', icon: AiOutlineDollar, url:'/dashboard/subscription' },
+  { name: 'Event', icon: FiStar ,url:'/dashboard/event'},
+  { name: 'Feed', icon: FiHome, url:'/dashboard/feed' },
   { name: 'Analytics', icon: FiTrendingUp },
   { name: 'promotions', icon: FiCompass },
   { name: 'Settings', icon: FiStar },
