@@ -47,7 +47,7 @@ const LinkItems = [
   { name: 'SubScription', icon: AiOutlineDollar, url:'/dashboard/subscription' },
   { name: 'Event', icon: FiStar ,url:'/dashboard/event'},
   { name: 'Feed', icon: FiHome, url:'/dashboard/feed' },
-  { name: 'Analytics', icon: FiTrendingUp },
+  { name: 'Analytics', icon: FiTrendingUp,url:'/dashboard/analytics' },
   { name: 'promotions', icon: FiCompass },
   { name: 'Settings', icon: FiStar },
   { name: 'Team Members', icon: FiSettings },

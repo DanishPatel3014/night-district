@@ -16,6 +16,7 @@ import Menu from '../views/Dashboard/Menu/index.js';
 import Subscription  from '../views/Dashboard/Subscription/index.js';
 import Event  from '../views/Dashboard/Event/index.js';
 import Feed  from '../views/Dashboard/Feed/index.js';
+import Analytics from '../views/Dashboard/Analytics/index.js'
 import { useEffect } from 'react';
 
 
@@ -54,6 +55,7 @@ export default function AppRoute() {
                     <Route exact path="/dashboard/subscription" element={<Subscription />}></Route>
                     <Route exact path="/dashboard/event" element={<Event />}></Route>
                     <Route exact path="/dashboard/feed" element={<Feed />}></Route>
+                    <Route exact path="/dashboard/analytics" element={<Analytics />}></Route>
 
 
                     {/* Dashboard-Routes */}
