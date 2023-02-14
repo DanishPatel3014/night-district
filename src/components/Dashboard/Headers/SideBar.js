@@ -48,9 +48,9 @@ const LinkItems = [
   { name: 'Event', icon: FiStar ,url:'/dashboard/event'},
   { name: 'Feed', icon: FiHome, url:'/dashboard/feed' },
   { name: 'Analytics', icon: FiTrendingUp,url:'/dashboard/analytics' },
-  { name: 'promotions', icon: FiCompass },
+  { name: 'promotions', icon: FiCompass,url : '/dashboard/promotions' },
   { name: 'Settings', icon: FiStar },
-  { name: 'Team Members', icon: FiSettings },
+  { name: 'Team Members', icon: FiSettings ,url:'/dashboard/teammembers' },
   { name: 'About', icon: FiStar },
   { name: 'Contact Us', icon: FiSettings },
 ];
