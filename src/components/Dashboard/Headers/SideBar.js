@@ -51,8 +51,7 @@ const LinkItems = [
   { name: 'promotions', icon: FiCompass,url : '/dashboard/promotions' },
   { name: 'Settings', icon: FiStar },
   { name: 'Team Members', icon: FiSettings ,url:'/dashboard/teammembers' },
-  { name: 'About', icon: FiStar },
-  { name: 'Contact Us', icon: FiSettings },
+  { name: 'Contact Us', icon: FiSettings,url:'/dashboard/Contact' },
 ];
 
 export default function SidebarWithHeader({ children, title }) {
