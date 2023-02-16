@@ -19,6 +19,7 @@ import Feed  from '../views/Dashboard/Feed/index.js';
 import Analytics from '../views/Dashboard/Analytics/index.js'
 import Promotions  from '../views/Dashboard/Promotions/index.js'
 import TeamMembers  from '../views/Dashboard/TeamMembers/index.js'
+import Contact from '../views/Dashboard/ContactUs/index.js'
 import { useEffect } from 'react';
 
 
@@ -60,6 +61,7 @@ export default function AppRoute() {
                     <Route exact path="/dashboard/analytics" element={<Analytics />}></Route>
                     <Route exact path="/dashboard/promotions" element={<Promotions />}></Route>
                     <Route exact path="/dashboard/teammembers" element={<TeamMembers />}></Route>
+                    <Route exact path="/dashboard/Contact" element={<Contact />}></Route>
 
 
                     {/* Dashboard-Routes */}
