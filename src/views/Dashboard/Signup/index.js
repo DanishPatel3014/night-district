@@ -30,6 +30,7 @@ import {
   AiFillFacebook,
   AiOutlineTwitter,
 } from 'react-icons/ai';
+import axios from 'axios';
 
 export default function Index() {
   const location = useLocation();
@@ -37,6 +38,10 @@ export default function Index() {
   useEffect(() => {
     HeadFootEnabler(location);
   }, [location]);
+
+  const baseUrl = "http://143.198.171.62:3002/api/";
+
+  console.log(baseUrl);
 
   const signupstyle = {
     w: '48%',
@@ -49,11 +54,15 @@ export default function Index() {
   const toast = useToast();
   const [isLoading, setisLoading] = useState(false);
   const [Fields, setFields] = useState({
-    name: '',
+    username: '',
     email: '',
     password: '',
-    confirmpassword: '',
+    confirm_password: '',
+    role : "bouncer"
+
   });
+
+  const [agreement, setagreement] = useState(false);
 
   const submitForm = async () => {
     try {
@@ -61,11 +70,13 @@ export default function Index() {
       const formData = new FormData();
 
       if (
-        Fields.name === '' &&
-        Fields.email === '' &&
-        Fields.password === '' &&
-        Fields.confirmpassword === ''
+        Fields.username === '' ||
+        Fields.email === '' ||
+        Fields.password === '' ||
+        Fields.confirm_password === ''
+        
       ) {
+        
         toast({
           status: 'error',
           title: 'Please fill in all the fields to proceed further.',
@@ -76,9 +87,31 @@ export default function Index() {
         setisLoading(false);
         return;
       }
+
+      if(agreement === false)
+      {
+        toast({
+          status: 'error',
+          title: 'Please agree to term and condition for proceed further.',
+          duration: 7000,
+          isClosable: true,
+          position: 'bottom-left',
+        });
+        setisLoading(false);
+        return;
+
+      }
+      
+      Fields.role = "bouncer";
+
       let data = Fields;
-      delete data?.confirmpassword
-      let response = await POST('/', Fields);
+      //delete data?.confirm_password;
+
+
+     let response = await POST(`${baseUrl}users`,Fields )
+
+     console.log(response);
+    //  console.log(baseUrl);
 
       toast({
         description: response.message,
@@ -89,11 +122,15 @@ export default function Index() {
       });
 
       setFields({
-        name: '',
+        username: '',
         email: '',
         password: '',
-        confirmpassword: '',
+        confirm_password: ''
       });
+      
+      setagreement(false);
+
+
 
       setisLoading(false);
     } catch (err) {
@@ -125,6 +162,7 @@ export default function Index() {
     color: 'dashbg.100',
   };
 
+
   return (
     <>
       <Stack
@@ -153,11 +191,11 @@ export default function Index() {
               placeholder={'Name'}
               type="Name"
               _placeholder={{ color: '#fff' }}
-              value={Fields.name}
+              value={Fields.username}
               onChange={e => {
                 setFields({
                   ...Fields,
-                  name: e.target.value,
+                  username: e.target.value,
                 });
               }}
             />
@@ -192,15 +230,19 @@ export default function Index() {
               placeholder={'Confirm Password'}
               type="ConfirmPassword"
               _placeholder={{ color: '#fff' }}
-              value={Fields.confirmpassword}
+              value={Fields.confirm_password}
               onChange={e => {
                 setFields({
                   ...Fields,
-                  confirmpassword: e.target.value,
+                  confirm_password: e.target.value,
                 });
               }}
             />
-            <Checkbox color={'#fff'} colorScheme="green">
+            <Checkbox  color={'#fff'} colorScheme="green"
+              isChecked={agreement}
+              onChange={(e) => { setagreement(e.target.checked) }}
+
+            >
               I agree to the{' '}
               <Link sx={lnk} as={ReactLink} to={'./'}>
                 Terms of Service

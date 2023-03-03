@@ -1,6 +1,7 @@
 {
   "name": "night_district",
   "version": "0.1.0",
+  "proxy": "http://143.198.171.62:3002/api/",
   "private": true,
   "dependencies": {
     "@chakra-ui/icons": "^2.0.2",
