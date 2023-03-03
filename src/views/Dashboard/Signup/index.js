@@ -100,7 +100,7 @@ export default function Index() {
       toast({
         description: 'Something went wrong!',
         status: 'error',
-        isClosable: true,
+        isClosable: true, 
         position: 'bottom-left',
         duration: 2500,
       });
