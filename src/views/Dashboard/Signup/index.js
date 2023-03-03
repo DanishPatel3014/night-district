@@ -25,7 +25,11 @@ import { Link as ReactLink } from 'react-router-dom';
 import { useState } from 'react';
 import { POST } from '../../../utilities/ApiProvider.js';
 import { Icon } from '@chakra-ui/icons';
-import { AiOutlineGoogle,AiFillFacebook,AiOutlineTwitter } from 'react-icons/ai';
+import {
+  AiOutlineGoogle,
+  AiFillFacebook,
+  AiOutlineTwitter,
+} from 'react-icons/ai';
 
 export default function Index() {
   const location = useLocation();
@@ -46,7 +50,6 @@ export default function Index() {
   const [isLoading, setisLoading] = useState(false);
   const [Fields, setFields] = useState({
     name: '',
-    city: '',
     email: '',
     password: '',
     confirmpassword: '',
@@ -73,16 +76,9 @@ export default function Index() {
         setisLoading(false);
         return;
       }
-
-      formData.append('action', 'CONTACT');
-      formData.append('name', Fields.name);
-      formData.append('email', Fields.email);
-      formData.append('password', Fields.password);
-      formData.append('confirmpassword', Fields.confirmpassword);
-
-      let response = await POST('/mailtest/emailer.php', formData, {
-        'Content-Type': 'application/x-www-form-urlencoded',
-      });
+      let data = Fields;
+      delete data?.confirmpassword
+      let response = await POST('/', Fields);
 
       toast({
         description: response.message,
@@ -115,22 +111,19 @@ export default function Index() {
     color: 'pHeading.100',
   };
 
-  const socialink = 
-  {
-    bg : '#fff',
-    w : '50px',
+  const socialink = {
+    bg: '#fff',
+    w: '50px',
     h: '50px',
-    display : 'flex',
-    alignItems : 'center',
-    justifyContent : 'center',
-    borderRadius:'6px'
-
-    }
-    const  socialicn = 
-    {
-      fontSize : '20px',
-      color: 'dashbg.100'
-    }
+    display: 'flex',
+    alignItems: 'center',
+    justifyContent: 'center',
+    borderRadius: '6px',
+  };
+  const socialicn = {
+    fontSize: '20px',
+    color: 'dashbg.100',
+  };
 
   return (
     <>
@@ -161,7 +154,12 @@ export default function Index() {
               type="Name"
               _placeholder={{ color: '#fff' }}
               value={Fields.name}
-              setFields={name => setFields({ ...Fields, name })}
+              onChange={e => {
+                setFields({
+                  ...Fields,
+                  name: e.target.value,
+                });
+              }}
             />
             <Input
               sx={signupstyle}
@@ -169,7 +167,12 @@ export default function Index() {
               type="email"
               _placeholder={{ color: '#fff' }}
               value={Fields.email}
-              setFields={email => setFields({ ...Fields, email })}
+              onChange={e => {
+                setFields({
+                  ...Fields,
+                  email: e.target.value,
+                });
+              }}
             />
             <Input
               sx={signupstyle}
@@ -177,7 +180,12 @@ export default function Index() {
               type="Password"
               _placeholder={{ color: '#fff' }}
               value={Fields.password}
-              setFields={password => setFields({ ...Fields, password })}
+              onChange={e => {
+                setFields({
+                  ...Fields,
+                  password: e.target.value,
+                });
+              }}
             />
             <Input
               sx={signupstyle}
@@ -185,9 +193,12 @@ export default function Index() {
               type="ConfirmPassword"
               _placeholder={{ color: '#fff' }}
               value={Fields.confirmpassword}
-              setFields={confirmpassword =>
-                setFields({ ...Fields, confirmpassword })
-              }
+              onChange={e => {
+                setFields({
+                  ...Fields,
+                  confirmpassword: e.target.value,
+                });
+              }}
             />
             <Checkbox color={'#fff'} colorScheme="green">
               I agree to the{' '}
@@ -222,12 +233,29 @@ export default function Index() {
               Submit
             </Button>
           </Stack>
-          <Stack >
+          <Stack>
             <CustomPara textAlign={'center'}>Or continue with</CustomPara>
-            <UnorderedList justifyContent={'center'}  listStyleType={'none'} display={'flex'} gap={'4'}>
-              <ListItem><Link sx={socialink} as={ReactLink} to={'/'}><Icon sx={socialicn} as={AiOutlineGoogle} /></Link></ListItem>
-              <ListItem><Link sx={socialink} as={ReactLink} to={'/'}><Icon sx={socialicn}  as={AiFillFacebook} /></Link></ListItem>
-              <ListItem><Link sx={socialink} as={ReactLink} to={'/'}><Icon sx={socialicn} as={AiOutlineTwitter} /></Link></ListItem>
+            <UnorderedList
+              justifyContent={'center'}
+              listStyleType={'none'}
+              display={'flex'}
+              gap={'4'}
+            >
+              <ListItem>
+                <Link sx={socialink} as={ReactLink} to={'/'}>
+                  <Icon sx={socialicn} as={AiOutlineGoogle} />
+                </Link>
+              </ListItem>
+              <ListItem>
+                <Link sx={socialink} as={ReactLink} to={'/'}>
+                  <Icon sx={socialicn} as={AiFillFacebook} />
+                </Link>
+              </ListItem>
+              <ListItem>
+                <Link sx={socialink} as={ReactLink} to={'/'}>
+                  <Icon sx={socialicn} as={AiOutlineTwitter} />
+                </Link>
+              </ListItem>
             </UnorderedList>
           </Stack>
         </Container>

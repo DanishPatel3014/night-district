@@ -19,6 +19,7 @@ import Payment from '../views/Dashboard/Payment/index.js';
 import Profile from '../views/Dashboard/Profile/index.js';
 import BarInformation from '../views/Dashboard/Profile/barinformation';
 import ChooseCategory from '../views/Dashboard/Menu/ChooseCategory';
+import ChooseSubCategory from '../views/Dashboard/Menu/ChooseSubcategory';
 import Dashboard from '../views/Dashboard/Home/index.js';
 import Menu from '../views/Dashboard/Menu/index.js';
 import Subscription  from '../views/Dashboard/Subscription/index.js';
@@ -68,6 +69,7 @@ export default function AppRoute() {
                     <Route exact path="/dashboard/profile" element={<Profile />}></Route>
                     <Route exact path="/dashboard/profile/barinformation" element={<BarInformation />}></Route>
                     <Route exact path="/dashboard/Menu/choosecategory" element={<ChooseCategory />}></Route>
+                    <Route exact path="/dashboard/Menu/Choosesubcategory" element={<ChooseSubCategory />}></Route>
                     <Route exact path="/dashboard" element={<Dashboard />}></Route>
                     <Route exact path="/dashboard/menu" element={<Menu />}></Route>
                     <Route exact path="/dashboard/subscription" element={<Subscription />}></Route>

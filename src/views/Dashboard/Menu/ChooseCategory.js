@@ -37,7 +37,7 @@ export default function ChooseCategory() {
       >
         <Container maxW={'full'} px={'14'}>
           <Stack direction={'row'} gap={'8'}>
-            <Stack w={'30%'}>
+            <Stack w={'350px'}>
               <CustomHeading
                 color={'white'}
                 textAlign={'left'}
@@ -72,53 +72,886 @@ export default function ChooseCategory() {
               <Stack>
                 <Img margin={'auto'} mb={'4'} w={'150px'} src={logo} />
                 <CustomHeading color={'#fff'}>
-                  Welcome to Night District
+                Add Your Menu
                 </CustomHeading>
-                <CustomPara textAlign={'center'}>Enter your details</CustomPara>
+                <CustomPara textAlign={'center'}>Select a menu category to get started</CustomPara>
               </Stack>
-              <Stack>
+           <Stack gap={'8'}>  
+           <Stack>
                 <Box>
-                  <CustomHeading textAlign={'left'} fontSize={'25px'} color={'#fff'}>
+                  <CustomHeading
+                    textAlign={'left'}
+                    fontSize={'25px'}
+                    color={'#fff'}
+                  >
                     Spirits
                   </CustomHeading>
                 </Box>
-                <Stack>
-                <Link>
-              <Box
-                position={'relative'}
-                pr={'4'}
-                display={'flex'}
-                justifyContent={'right'}
-                alignItems={'flex-end'}
-                borderRadius={'8px'}
-                h={'125px'}
-                w={'198px'}
-                zIndex={'1'}
-                backgroundImage={cat1}
-                _before={{
-                  content: "''",
-                  w: '100%',
-                  h: '100%',
-                  position: 'absolute',
-                  bg: '#0000007a',
-                  right: '0',
-                  left: '0',
-                  zIndex: '-1',
-                }}
-              >
-                <CustomHeading
-                  fontSize={'25px'}
-                  fontWeight={'700'}
-                  color={'#fff'}
-                >
-                  Spirits
-                </CustomHeading>
-              </Box>
-            </Link>
+                <Stack direction={'row'} gap={'4'} flexWrap={'wrap'} spacing={'0'}>
+                  <Link marginLeft={'0'}>
+                    <Box
+                      position={'relative'}
+                      pr={'4'}
+                      display={'flex'}
+                      justifyContent={'right'}
+                      alignItems={'flex-end'}
+                      borderRadius={'8px'}
+                      h={'125px'}
+                      w={'198px'}
+                      zIndex={'1'}
+                      backgroundImage={cat1}
+                      _before={{
+                        content: "''",
+                        w: '100%',
+                        h: '100%',
+                        position: 'absolute',
+                        bg: '#000',
+                        right: '0',
+                        left: '0',
+                        zIndex: '-1',
+                        borderRadius: '6px',
+                        opacity: '0.6',
+                      }}
+                    >
+                      <CustomHeading
+                        fontSize={'25px'}
+                        fontWeight={'700'}
+                        color={'#fff'}
+                      >
+                        Spirits
+                      </CustomHeading>
+                    </Box>
+                  </Link>
+                  <Link marginLeft={'0'}>
+                    <Box
+                      position={'relative'}
+                      pr={'4'}
+                      display={'flex'}
+                      justifyContent={'right'}
+                      alignItems={'flex-end'}
+                      borderRadius={'8px'}
+                      h={'125px'}
+                      w={'198px'}
+                      zIndex={'1'}
+                      backgroundImage={cat1}
+                      _before={{
+                        content: "''",
+                        w: '100%',
+                        h: '100%',
+                        position: 'absolute',
+                        bg: '#000',
+                        right: '0',
+                        left: '0',
+                        zIndex: '-1',
+                        borderRadius: '6px',
+                        opacity: '0.6',
+                      }}
+                    >
+                      <CustomHeading
+                        fontSize={'25px'}
+                        fontWeight={'700'}
+                        color={'#fff'}
+                      >
+                        Spirits
+                      </CustomHeading>
+                    </Box>
+                  </Link>
+                  <Link marginLeft={'0'}>
+                    <Box
+                      position={'relative'}
+                      pr={'4'}
+                      display={'flex'}
+                      justifyContent={'right'}
+                      alignItems={'flex-end'}
+                      borderRadius={'8px'}
+                      h={'125px'}
+                      w={'198px'}
+                      zIndex={'1'}
+                      backgroundImage={cat1}
+                      _before={{
+                        content: "''",
+                        w: '100%',
+                        h: '100%',
+                        position: 'absolute',
+                        bg: '#000',
+                        right: '0',
+                        left: '0',
+                        zIndex: '-1',
+                        borderRadius: '6px',
+                        opacity: '0.6',
+                      }}
+                    >
+                      <CustomHeading
+                        fontSize={'25px'}
+                        fontWeight={'700'}
+                        color={'#fff'}
+                      >
+                        Spirits
+                      </CustomHeading>
+                    </Box>
+                  </Link>
+                  <Link marginLeft={'0'}>
+                    <Box
+                      position={'relative'}
+                      pr={'4'}
+                      display={'flex'}
+                      justifyContent={'right'}
+                      alignItems={'flex-end'}
+                      borderRadius={'8px'}
+                      h={'125px'}
+                      w={'198px'}
+                      zIndex={'1'}
+                      backgroundImage={cat1}
+                      _before={{
+                        content: "''",
+                        w: '100%',
+                        h: '100%',
+                        position: 'absolute',
+                        bg: '#000',
+                        right: '0',
+                        left: '0',
+                        zIndex: '-1',
+                        borderRadius: '6px',
+                        opacity: '0.6',
+                      }}
+                    >
+                      <CustomHeading
+                        fontSize={'25px'}
+                        fontWeight={'700'}
+                        color={'#fff'}
+                      >
+                        Spirits
+                      </CustomHeading>
+                    </Box>
+                  </Link>
+                  <Link marginLeft={'0'}>
+                    <Box
+                      position={'relative'}
+                      pr={'4'}
+                      display={'flex'}
+                      justifyContent={'right'}
+                      alignItems={'flex-end'}
+                      borderRadius={'8px'}
+                      h={'125px'}
+                      w={'198px'}
+                      zIndex={'1'}
+                      backgroundImage={cat1}
+                      _before={{
+                        content: "''",
+                        w: '100%',
+                        h: '100%',
+                        position: 'absolute',
+                        bg: '#000',
+                        right: '0',
+                        left: '0',
+                        zIndex: '-1',
+                        borderRadius: '6px',
+                        opacity: '0.6',
+                      }}
+                    >
+                      <CustomHeading
+                        fontSize={'25px'}
+                        fontWeight={'700'}
+                        color={'#fff'}
+                      >
+                        Spirits
+                      </CustomHeading>
+                    </Box>
+                  </Link>
+                  <Link marginLeft={'0'}>
+                    <Box
+                      position={'relative'}
+                      pr={'4'}
+                      display={'flex'}
+                      justifyContent={'right'}
+                      alignItems={'flex-end'}
+                      borderRadius={'8px'}
+                      h={'125px'}
+                      w={'198px'}
+                      zIndex={'1'}
+                      backgroundImage={cat1}
+                      _before={{
+                        content: "''",
+                        w: '100%',
+                        h: '100%',
+                        position: 'absolute',
+                        bg: '#000',
+                        right: '0',
+                        left: '0',
+                        zIndex: '-1',
+                        borderRadius: '6px',
+                        opacity: '0.6',
+                      }}
+                    >
+                      <CustomHeading
+                        fontSize={'25px'}
+                        fontWeight={'700'}
+                        color={'#fff'}
+                      >
+                        Spirits
+                      </CustomHeading>
+                    </Box>
+                  </Link>
+            
                 </Stack>
               </Stack>
+              <Stack>
+                <Box>
+                  <CustomHeading
+                    textAlign={'left'}
+                    fontSize={'25px'}
+                    color={'#fff'}
+                  >
+                    Cocktails
+                  </CustomHeading>
+                </Box>
+                <Stack direction={'row'} gap={'4'} flexWrap={'wrap'} spacing={'0'}>
+                  <Link marginLeft={'0'}>
+                    <Box
+                      position={'relative'}
+                      pr={'4'}
+                      display={'flex'}
+                      justifyContent={'right'}
+                      alignItems={'flex-end'}
+                      borderRadius={'8px'}
+                      h={'125px'}
+                      w={'198px'}
+                      zIndex={'1'}
+                      backgroundImage={cat1}
+                      _before={{
+                        content: "''",
+                        w: '100%',
+                        h: '100%',
+                        position: 'absolute',
+                        bg: '#000',
+                        right: '0',
+                        left: '0',
+                        zIndex: '-1',
+                        borderRadius: '6px',
+                        opacity: '0.6',
+                      }}
+                    >
+                      <CustomHeading
+                        fontSize={'25px'}
+                        fontWeight={'700'}
+                        color={'#fff'}
+                      >
+                        Spirits
+                      </CustomHeading>
+                    </Box>
+                  </Link>
+                  <Link marginLeft={'0'}>
+                    <Box
+                      position={'relative'}
+                      pr={'4'}
+                      display={'flex'}
+                      justifyContent={'right'}
+                      alignItems={'flex-end'}
+                      borderRadius={'8px'}
+                      h={'125px'}
+                      w={'198px'}
+                      zIndex={'1'}
+                      backgroundImage={cat1}
+                      _before={{
+                        content: "''",
+                        w: '100%',
+                        h: '100%',
+                        position: 'absolute',
+                        bg: '#000',
+                        right: '0',
+                        left: '0',
+                        zIndex: '-1',
+                        borderRadius: '6px',
+                        opacity: '0.6',
+                      }}
+                    >
+                      <CustomHeading
+                        fontSize={'25px'}
+                        fontWeight={'700'}
+                        color={'#fff'}
+                      >
+                        Spirits
+                      </CustomHeading>
+                    </Box>
+                  </Link>
+                  <Link marginLeft={'0'}>
+                    <Box
+                      position={'relative'}
+                      pr={'4'}
+                      display={'flex'}
+                      justifyContent={'right'}
+                      alignItems={'flex-end'}
+                      borderRadius={'8px'}
+                      h={'125px'}
+                      w={'198px'}
+                      zIndex={'1'}
+                      backgroundImage={cat1}
+                      _before={{
+                        content: "''",
+                        w: '100%',
+                        h: '100%',
+                        position: 'absolute',
+                        bg: '#000',
+                        right: '0',
+                        left: '0',
+                        zIndex: '-1',
+                        borderRadius: '6px',
+                        opacity: '0.6',
+                      }}
+                    >
+                      <CustomHeading
+                        fontSize={'25px'}
+                        fontWeight={'700'}
+                        color={'#fff'}
+                      >
+                        Spirits
+                      </CustomHeading>
+                    </Box>
+                  </Link>
+                  <Link marginLeft={'0'}>
+                    <Box
+                      position={'relative'}
+                      pr={'4'}
+                      display={'flex'}
+                      justifyContent={'right'}
+                      alignItems={'flex-end'}
+                      borderRadius={'8px'}
+                      h={'125px'}
+                      w={'198px'}
+                      zIndex={'1'}
+                      backgroundImage={cat1}
+                      _before={{
+                        content: "''",
+                        w: '100%',
+                        h: '100%',
+                        position: 'absolute',
+                        bg: '#000',
+                        right: '0',
+                        left: '0',
+                        zIndex: '-1',
+                        borderRadius: '6px',
+                        opacity: '0.6',
+                      }}
+                    >
+                      <CustomHeading
+                        fontSize={'25px'}
+                        fontWeight={'700'}
+                        color={'#fff'}
+                      >
+                        Spirits
+                      </CustomHeading>
+                    </Box>
+                  </Link>
+                  <Link marginLeft={'0'}>
+                    <Box
+                      position={'relative'}
+                      pr={'4'}
+                      display={'flex'}
+                      justifyContent={'right'}
+                      alignItems={'flex-end'}
+                      borderRadius={'8px'}
+                      h={'125px'}
+                      w={'198px'}
+                      zIndex={'1'}
+                      backgroundImage={cat1}
+                      _before={{
+                        content: "''",
+                        w: '100%',
+                        h: '100%',
+                        position: 'absolute',
+                        bg: '#000',
+                        right: '0',
+                        left: '0',
+                        zIndex: '-1',
+                        borderRadius: '6px',
+                        opacity: '0.6',
+                      }}
+                    >
+                      <CustomHeading
+                        fontSize={'25px'}
+                        fontWeight={'700'}
+                        color={'#fff'}
+                      >
+                        Spirits
+                      </CustomHeading>
+                    </Box>
+                  </Link>
+                  <Link marginLeft={'0'}>
+                    <Box
+                      position={'relative'}
+                      pr={'4'}
+                      display={'flex'}
+                      justifyContent={'right'}
+                      alignItems={'flex-end'}
+                      borderRadius={'8px'}
+                      h={'125px'}
+                      w={'198px'}
+                      zIndex={'1'}
+                      backgroundImage={cat1}
+                      _before={{
+                        content: "''",
+                        w: '100%',
+                        h: '100%',
+                        position: 'absolute',
+                        bg: '#000',
+                        right: '0',
+                        left: '0',
+                        zIndex: '-1',
+                        borderRadius: '6px',
+                        opacity: '0.6',
+                      }}
+                    >
+                      <CustomHeading
+                        fontSize={'25px'}
+                        fontWeight={'700'}
+                        color={'#fff'}
+                      >
+                        Spirits
+                      </CustomHeading>
+                    </Box>
+                  </Link>
+            
+                </Stack>
+              </Stack>
+              <Stack>
+                <Box>
+                  <CustomHeading
+                    textAlign={'left'}
+                    fontSize={'25px'}
+                    color={'#fff'}
+                  >
+                   Beer
+                  </CustomHeading>
+                </Box>
+                <Stack direction={'row'} gap={'4'} flexWrap={'wrap'} spacing={'0'}>
+                  <Link marginLeft={'0'}>
+                    <Box
+                      position={'relative'}
+                      pr={'4'}
+                      display={'flex'}
+                      justifyContent={'right'}
+                      alignItems={'flex-end'}
+                      borderRadius={'8px'}
+                      h={'125px'}
+                      w={'198px'}
+                      zIndex={'1'}
+                      backgroundImage={cat1}
+                      _before={{
+                        content: "''",
+                        w: '100%',
+                        h: '100%',
+                        position: 'absolute',
+                        bg: '#000',
+                        right: '0',
+                        left: '0',
+                        zIndex: '-1',
+                        borderRadius: '6px',
+                        opacity: '0.6',
+                      }}
+                    >
+                      <CustomHeading
+                        fontSize={'25px'}
+                        fontWeight={'700'}
+                        color={'#fff'}
+                      >
+                        Spirits
+                      </CustomHeading>
+                    </Box>
+                  </Link>
+                  <Link marginLeft={'0'}>
+                    <Box
+                      position={'relative'}
+                      pr={'4'}
+                      display={'flex'}
+                      justifyContent={'right'}
+                      alignItems={'flex-end'}
+                      borderRadius={'8px'}
+                      h={'125px'}
+                      w={'198px'}
+                      zIndex={'1'}
+                      backgroundImage={cat1}
+                      _before={{
+                        content: "''",
+                        w: '100%',
+                        h: '100%',
+                        position: 'absolute',
+                        bg: '#000',
+                        right: '0',
+                        left: '0',
+                        zIndex: '-1',
+                        borderRadius: '6px',
+                        opacity: '0.6',
+                      }}
+                    >
+                      <CustomHeading
+                        fontSize={'25px'}
+                        fontWeight={'700'}
+                        color={'#fff'}
+                      >
+                        Spirits
+                      </CustomHeading>
+                    </Box>
+                  </Link>
+                  <Link marginLeft={'0'}>
+                    <Box
+                      position={'relative'}
+                      pr={'4'}
+                      display={'flex'}
+                      justifyContent={'right'}
+                      alignItems={'flex-end'}
+                      borderRadius={'8px'}
+                      h={'125px'}
+                      w={'198px'}
+                      zIndex={'1'}
+                      backgroundImage={cat1}
+                      _before={{
+                        content: "''",
+                        w: '100%',
+                        h: '100%',
+                        position: 'absolute',
+                        bg: '#000',
+                        right: '0',
+                        left: '0',
+                        zIndex: '-1',
+                        borderRadius: '6px',
+                        opacity: '0.6',
+                      }}
+                    >
+                      <CustomHeading
+                        fontSize={'25px'}
+                        fontWeight={'700'}
+                        color={'#fff'}
+                      >
+                        Spirits
+                      </CustomHeading>
+                    </Box>
+                  </Link>
+                  <Link marginLeft={'0'}>
+                    <Box
+                      position={'relative'}
+                      pr={'4'}
+                      display={'flex'}
+                      justifyContent={'right'}
+                      alignItems={'flex-end'}
+                      borderRadius={'8px'}
+                      h={'125px'}
+                      w={'198px'}
+                      zIndex={'1'}
+                      backgroundImage={cat1}
+                      _before={{
+                        content: "''",
+                        w: '100%',
+                        h: '100%',
+                        position: 'absolute',
+                        bg: '#000',
+                        right: '0',
+                        left: '0',
+                        zIndex: '-1',
+                        borderRadius: '6px',
+                        opacity: '0.6',
+                      }}
+                    >
+                      <CustomHeading
+                        fontSize={'25px'}
+                        fontWeight={'700'}
+                        color={'#fff'}
+                      >
+                        Spirits
+                      </CustomHeading>
+                    </Box>
+                  </Link>
+                  <Link marginLeft={'0'}>
+                    <Box
+                      position={'relative'}
+                      pr={'4'}
+                      display={'flex'}
+                      justifyContent={'right'}
+                      alignItems={'flex-end'}
+                      borderRadius={'8px'}
+                      h={'125px'}
+                      w={'198px'}
+                      zIndex={'1'}
+                      backgroundImage={cat1}
+                      _before={{
+                        content: "''",
+                        w: '100%',
+                        h: '100%',
+                        position: 'absolute',
+                        bg: '#000',
+                        right: '0',
+                        left: '0',
+                        zIndex: '-1',
+                        borderRadius: '6px',
+                        opacity: '0.6',
+                      }}
+                    >
+                      <CustomHeading
+                        fontSize={'25px'}
+                        fontWeight={'700'}
+                        color={'#fff'}
+                      >
+                        Spirits
+                      </CustomHeading>
+                    </Box>
+                  </Link>
+                  <Link marginLeft={'0'}>
+                    <Box
+                      position={'relative'}
+                      pr={'4'}
+                      display={'flex'}
+                      justifyContent={'right'}
+                      alignItems={'flex-end'}
+                      borderRadius={'8px'}
+                      h={'125px'}
+                      w={'198px'}
+                      zIndex={'1'}
+                      backgroundImage={cat1}
+                      _before={{
+                        content: "''",
+                        w: '100%',
+                        h: '100%',
+                        position: 'absolute',
+                        bg: '#000',
+                        right: '0',
+                        left: '0',
+                        zIndex: '-1',
+                        borderRadius: '6px',
+                        opacity: '0.6',
+                      }}
+                    >
+                      <CustomHeading
+                        fontSize={'25px'}
+                        fontWeight={'700'}
+                        color={'#fff'}
+                      >
+                        Spirits
+                      </CustomHeading>
+                    </Box>
+                  </Link>
+            
+                </Stack>
+              </Stack>
+              <Stack>
+                <Box>
+                  <CustomHeading
+                    textAlign={'left'}
+                    fontSize={'25px'}
+                    color={'#fff'}
+                  >
+                   Wine
+                  </CustomHeading>
+                </Box>
+                <Stack direction={'row'} gap={'4'} flexWrap={'wrap'} spacing={'0'}>
+                  <Link marginLeft={'0'}>
+                    <Box
+                      position={'relative'}
+                      pr={'4'}
+                      display={'flex'}
+                      justifyContent={'right'}
+                      alignItems={'flex-end'}
+                      borderRadius={'8px'}
+                      h={'125px'}
+                      w={'198px'}
+                      zIndex={'1'}
+                      backgroundImage={cat1}
+                      _before={{
+                        content: "''",
+                        w: '100%',
+                        h: '100%',
+                        position: 'absolute',
+                        bg: '#000',
+                        right: '0',
+                        left: '0',
+                        zIndex: '-1',
+                        borderRadius: '6px',
+                        opacity: '0.6',
+                      }}
+                    >
+                      <CustomHeading
+                        fontSize={'25px'}
+                        fontWeight={'700'}
+                        color={'#fff'}
+                      >
+                        Spirits
+                      </CustomHeading>
+                    </Box>
+                  </Link>
+                  <Link marginLeft={'0'}>
+                    <Box
+                      position={'relative'}
+                      pr={'4'}
+                      display={'flex'}
+                      justifyContent={'right'}
+                      alignItems={'flex-end'}
+                      borderRadius={'8px'}
+                      h={'125px'}
+                      w={'198px'}
+                      zIndex={'1'}
+                      backgroundImage={cat1}
+                      _before={{
+                        content: "''",
+                        w: '100%',
+                        h: '100%',
+                        position: 'absolute',
+                        bg: '#000',
+                        right: '0',
+                        left: '0',
+                        zIndex: '-1',
+                        borderRadius: '6px',
+                        opacity: '0.6',
+                      }}
+                    >
+                      <CustomHeading
+                        fontSize={'25px'}
+                        fontWeight={'700'}
+                        color={'#fff'}
+                      >
+                        Spirits
+                      </CustomHeading>
+                    </Box>
+                  </Link>
+                  <Link marginLeft={'0'}>
+                    <Box
+                      position={'relative'}
+                      pr={'4'}
+                      display={'flex'}
+                      justifyContent={'right'}
+                      alignItems={'flex-end'}
+                      borderRadius={'8px'}
+                      h={'125px'}
+                      w={'198px'}
+                      zIndex={'1'}
+                      backgroundImage={cat1}
+                      _before={{
+                        content: "''",
+                        w: '100%',
+                        h: '100%',
+                        position: 'absolute',
+                        bg: '#000',
+                        right: '0',
+                        left: '0',
+                        zIndex: '-1',
+                        borderRadius: '6px',
+                        opacity: '0.6',
+                      }}
+                    >
+                      <CustomHeading
+                        fontSize={'25px'}
+                        fontWeight={'700'}
+                        color={'#fff'}
+                      >
+                        Spirits
+                      </CustomHeading>
+                    </Box>
+                  </Link>
+                  <Link marginLeft={'0'}>
+                    <Box
+                      position={'relative'}
+                      pr={'4'}
+                      display={'flex'}
+                      justifyContent={'right'}
+                      alignItems={'flex-end'}
+                      borderRadius={'8px'}
+                      h={'125px'}
+                      w={'198px'}
+                      zIndex={'1'}
+                      backgroundImage={cat1}
+                      _before={{
+                        content: "''",
+                        w: '100%',
+                        h: '100%',
+                        position: 'absolute',
+                        bg: '#000',
+                        right: '0',
+                        left: '0',
+                        zIndex: '-1',
+                        borderRadius: '6px',
+                        opacity: '0.6',
+                      }}
+                    >
+                      <CustomHeading
+                        fontSize={'25px'}
+                        fontWeight={'700'}
+                        color={'#fff'}
+                      >
+                        Spirits
+                      </CustomHeading>
+                    </Box>
+                  </Link>
+                  <Link marginLeft={'0'}>
+                    <Box
+                      position={'relative'}
+                      pr={'4'}
+                      display={'flex'}
+                      justifyContent={'right'}
+                      alignItems={'flex-end'}
+                      borderRadius={'8px'}
+                      h={'125px'}
+                      w={'198px'}
+                      zIndex={'1'}
+                      backgroundImage={cat1}
+                      _before={{
+                        content: "''",
+                        w: '100%',
+                        h: '100%',
+                        position: 'absolute',
+                        bg: '#000',
+                        right: '0',
+                        left: '0',
+                        zIndex: '-1',
+                        borderRadius: '6px',
+                        opacity: '0.6',
+                      }}
+                    >
+                      <CustomHeading
+                        fontSize={'25px'}
+                        fontWeight={'700'}
+                        color={'#fff'}
+                      >
+                        Spirits
+                      </CustomHeading>
+                    </Box>
+                  </Link>
+                  <Link marginLeft={'0'}>
+                    <Box
+                      position={'relative'}
+                      pr={'4'}
+                      display={'flex'}
+                      justifyContent={'right'}
+                      alignItems={'flex-end'}
+                      borderRadius={'8px'}
+                      h={'125px'}
+                      w={'198px'}
+                      zIndex={'1'}
+                      backgroundImage={cat1}
+                      _before={{
+                        content: "''",
+                        w: '100%',
+                        h: '100%',
+                        position: 'absolute',
+                        bg: '#000',
+                        right: '0',
+                        left: '0',
+                        zIndex: '-1',
+                        borderRadius: '6px',
+                        opacity: '0.6',
+                      }}
+                    >
+                      <CustomHeading
+                        fontSize={'25px'}
+                        fontWeight={'700'}
+                        color={'#fff'}
+                      >
+                        Spirits
+                      </CustomHeading>
+                    </Box>
+                  </Link>
+            
+                </Stack>
+              </Stack>
+           </Stack>
             </Stack>
-            <Stack w={'30%'}></Stack>
+            <Stack w={'350px'}></Stack>
           </Stack>
         </Container>
       </Stack>
