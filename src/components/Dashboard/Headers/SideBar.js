@@ -49,7 +49,7 @@ const LinkItems = [
   { name: 'Feed', icon: FiHome, url:'/dashboard/feed' },
   { name: 'Analytics', icon: FiTrendingUp,url:'/dashboard/analytics' },
   { name: 'promotions', icon: FiCompass,url : '/dashboard/promotions' },
-  { name: 'Settings', icon: FiStar },
+  { name: 'Settings', icon: FiStar,url:'/dashboard/setting' },
   { name: 'Team Members', icon: FiSettings ,url:'/dashboard/teammembers' },
   { name: 'Contact Us', icon: FiSettings,url:'/dashboard/Contact' },
 ];

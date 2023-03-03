@@ -112,7 +112,11 @@ input, select{border-color: #000 !important;}
 {
   list-style: none;
 }
-
+[type="file"]::-webkit-file-upload-button
+{
+  background-color: transparent;
+  opacity: 0;
+}
 
 
 /* @media (max-width: 767px) {

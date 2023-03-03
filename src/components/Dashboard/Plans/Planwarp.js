@@ -1,36 +1,21 @@
+import React from 'react'
 import { Box, Flex, ListItem, Stack, UnorderedList } from '@chakra-ui/react';
-import React from 'react';
 import CustomHeading from '../../../components/Website/Headings/CustomHeading';
 import CustomPara from '../../../components/Website/Paragraph/CustomPara';
-import MainDashboard from '../MainDashboard';
 import { AiOutlineCheck } from 'react-icons/ai';
 import { Icon } from '@chakra-ui/icons';
-import Planwarp from '../../../components/Dashboard/Plans/Planwarp';
 
-export default function index() {
+export default function Planwarp() {
   return (
     <>
-      <MainDashboard>
-        <Stack p={'4'} gap={'8'}>
-          <Stack>
-            <Stack>
-              <CustomHeading
-                textAlign={'left'}
-                fontSize={'30px'}
-                color={'#fff'}
-              >
-                Subscription Plans
-              </CustomHeading>
-            </Stack>
-            <Stack direction={'row'} gap={'6'}>
-              <Box
+      <Box
                 justifyItems={'center'}
                 py={'8'}
+                border={'1px solid #fff'}
+                borderRadius={'6'}
                 justifyContent={'center'}
                 textAlign={'center'}
-                w={'500px'}
-                borderRadius={'6'}
-                bg={'pHeading.100'}
+                bg={'dashbg.100'}
               >
                 <Stack pb={'14'} mb={'4'} borderBottom={'1px solid #fff'}>
                   <Box
@@ -39,15 +24,15 @@ export default function index() {
                     borderRadius={'8'}
                     m={'auto'}
                     w={'100px'}
-                    bg={'#000'}
+                    bg={'pHeading.100'}
                   >
                     <CustomPara marginBottom={'0'} textAlign={'center'}>
-                      Free Trial
+                      Yearly
                     </CustomPara>
                   </Box>
-                  <CustomHeading color={'#fff'}>1 Month</CustomHeading>
+                  <CustomHeading color={'#fff'}>$99.00</CustomHeading>
                 </Stack>
-                <Stack>
+                <Stack pr={'6'}>
                   <UnorderedList listStyleType={'none'} spacing={'4'}>
                     <ListItem>
                       <Flex alignItems={'center'} gap={'2'}>
@@ -62,7 +47,11 @@ export default function index() {
                       </Flex>
                     </ListItem>
                     <ListItem>
-                      <Flex alignItems={'center'} gap={'2'}>
+                      <Flex
+                        justifyContent={'center'}
+                        alignItems={'center'}
+                        gap={'2'}
+                      >
                         <Icon
                           color={'white'}
                           fontSize={'16px'}
@@ -74,7 +63,11 @@ export default function index() {
                       </Flex>
                     </ListItem>
                     <ListItem>
-                      <Flex alignItems={'center'} gap={'2'}>
+                      <Flex
+                        justifyContent={'center'}
+                        alignItems={'center'}
+                        gap={'2'}
+                      >
                         <Icon
                           color={'white'}
                           fontSize={'16px'}
@@ -86,7 +79,11 @@ export default function index() {
                       </Flex>
                     </ListItem>
                     <ListItem>
-                      <Flex alignItems={'center'} gap={'2'}>
+                      <Flex
+                        justifyContent={'center'}
+                        alignItems={'center'}
+                        gap={'2'}
+                      >
                         <Icon
                           color={'white'}
                           fontSize={'16px'}
@@ -100,12 +97,6 @@ export default function index() {
                   </UnorderedList>
                 </Stack>
               </Box>
-              <Planwarp/>
-            <Planwarp/>
-            </Stack>
-          </Stack>
-        </Stack>
-      </MainDashboard>
     </>
-  );
+  )
 }
