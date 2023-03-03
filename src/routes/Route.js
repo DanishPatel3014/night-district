@@ -11,7 +11,15 @@ import Footer from '../components/Website/Footer';
 import Bars from '../views/Website/Bars';
 import StoreProfile from '../views/Website/StoreProfile';
 import BarOwner from '../views/Website/BarOwner';
-import Dashboard from '../views/Dashboard/Home/index.js'
+import Signup from '../views/Dashboard/Signup/index.js';
+import Login from '../views/Dashboard/Login/index.js';
+import Plan from '../views/Dashboard/Plans/index.js';
+import Equipment from '../views/Dashboard/Equipment/index.js';
+import Payment from '../views/Dashboard/Payment/index.js';
+import Profile from '../views/Dashboard/Profile/index.js';
+import BarInformation from '../views/Dashboard/Profile/barinformation';
+import ChooseCategory from '../views/Dashboard/Menu/ChooseCategory';
+import Dashboard from '../views/Dashboard/Home/index.js';
 import Menu from '../views/Dashboard/Menu/index.js';
 import Subscription  from '../views/Dashboard/Subscription/index.js';
 import Event  from '../views/Dashboard/Event/index.js';
@@ -20,6 +28,7 @@ import Analytics from '../views/Dashboard/Analytics/index.js'
 import Promotions  from '../views/Dashboard/Promotions/index.js'
 import TeamMembers  from '../views/Dashboard/TeamMembers/index.js'
 import Contact from '../views/Dashboard/ContactUs/index.js'
+import Profilesetting from '../views/Dashboard/Profilesetting/index.js'
 import { useEffect } from 'react';
 
 
@@ -47,12 +56,18 @@ export default function AppRoute() {
                     <Route exact path="/StoreProfile" element={<StoreProfile />}></Route>
                     <Route exact path="/BarOwner" element={<BarOwner />}></Route>
 
-
                     {/* Website-Routes */}
 
 
                     {/* Dashboard-Routes */}
-                    
+                    <Route exact path="/dashboard/signup" element={<Signup />}></Route>
+                    <Route exact path="/dashboard/login" element={<Login />}></Route>
+                    <Route exact path="/dashboard/Plan" element={<Plan />}></Route>
+                    <Route exact path="/dashboard/equipment" element={<Equipment />}></Route>
+                    <Route exact path="/dashboard/payment" element={<Payment />}></Route>
+                    <Route exact path="/dashboard/profile" element={<Profile />}></Route>
+                    <Route exact path="/dashboard/profile/barinformation" element={<BarInformation />}></Route>
+                    <Route exact path="/dashboard/Menu/choosecategory" element={<ChooseCategory />}></Route>
                     <Route exact path="/dashboard" element={<Dashboard />}></Route>
                     <Route exact path="/dashboard/menu" element={<Menu />}></Route>
                     <Route exact path="/dashboard/subscription" element={<Subscription />}></Route>
@@ -60,9 +75,9 @@ export default function AppRoute() {
                     <Route exact path="/dashboard/feed" element={<Feed />}></Route>
                     <Route exact path="/dashboard/analytics" element={<Analytics />}></Route>
                     <Route exact path="/dashboard/promotions" element={<Promotions />}></Route>
+                    <Route exact path="/dashboard/setting" element={<Profilesetting />}></Route>
                     <Route exact path="/dashboard/teammembers" element={<TeamMembers />}></Route>
                     <Route exact path="/dashboard/Contact" element={<Contact />}></Route>
-
 
                     {/* Dashboard-Routes */}
                     <Route exact path="*" element={<NotFound />}></Route>
