@@ -19,6 +19,7 @@ import cat1 from '../../../assets/images/menu/c1.jpg';
 import menu1 from '../../../assets/images/menu/menu1.jpg';
 import CustomPara from '../../../components/Website/Paragraph/CustomPara';
 
+
 export default function Menu() {
   return (
     <>
@@ -71,10 +72,12 @@ export default function Menu() {
                   w: '100%',
                   h: '100%',
                   position: 'absolute',
-                  bg: '#0000007a',
+                  bg: '#000',
                   right: '0',
                   left: '0',
                   zIndex: '-1',
+                  borderRadius:'6px',
+                  opacity:'0.6'
                 }}
               >
                 <CustomHeading
@@ -103,10 +106,12 @@ export default function Menu() {
                   w: '100%',
                   h: '100%',
                   position: 'absolute',
-                  bg: '#0000007a',
+                  bg: '#000',
                   right: '0',
                   left: '0',
                   zIndex: '-1',
+                  borderRadius:'6px',
+                  opacity:'0.6'
                 }}
               >
                 <CustomHeading
@@ -118,6 +123,7 @@ export default function Menu() {
                 </CustomHeading>
               </Box>
             </Link>
+
           </Stack>
           <Stack>
             <Box>
