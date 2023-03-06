@@ -29,7 +29,6 @@
     "react-scripts": "5.0.1",
     "react-topbar-progress-indicator": "^4.1.0",
     "reactcss": "^1.2.3",
-    "use-file-upload": "^1.0.11",
     "web-vitals": "^0.2.4"
   },
   "scripts": {
