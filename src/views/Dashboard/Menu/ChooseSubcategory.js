@@ -9,6 +9,7 @@ import { HeadFootEnabler } from '../../../utilities/HeadFootEnabler';
 import { AiOutlineSearch } from 'react-icons/ai';
 import { Icon } from '@chakra-ui/icons';
 import cat1 from '../../../assets/images/menu/c1.jpg';
+import PrimaryBtn from '../../../components/Website/Buttons/PrimaryBtn';
 
 export default function ChooseSubcategory() {
   const location = useLocation();
@@ -270,7 +271,9 @@ export default function ChooseSubcategory() {
               </Stack>
               </Stack>
             </Stack>
-            <Stack></Stack>
+            <Stack>
+                <PrimaryBtn value={'Continue'}/>
+            </Stack>
           </Stack>
         </Container>
       </Stack>

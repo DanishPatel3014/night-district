@@ -7,7 +7,7 @@ import logo from '../../../assets/images/Banner/signlogo.png';
 import profileimg from '../../../assets/images/other/profile.png';
 import { useEffect } from 'react';
 import { Link as ReactLink } from 'react-router-dom';
-import { useFileUpload } from 'use-file-upload';
+
 import { CirclePicker, SketchPicker } from 'react-color';
 import reactCSS from 'reactcss';
 import CustomHeading from '../../../components/Website/Headings/CustomHeading.js';
@@ -21,7 +21,7 @@ export default function Index() {
   }, [location]);
 
   const defaultSrc = profileimg;
-  const [files, selectFiles] = useFileUpload();
+  
 
   const [blockPickerColor, setBlockPickerColor] = useState('#37d67a');
   const [displayColorPicker, setdisplayColorPicker] = useState(false);
@@ -84,7 +84,7 @@ export default function Index() {
                 </Stack>
 
                 <Stack>
-                  <Img
+                  {/* <Img
                     w={'120px'}
                     h={'120px'}
                     objectFit={'cover'}
@@ -92,8 +92,8 @@ export default function Index() {
                     borderRadius={'50%'}
                     src={files?.source || defaultSrc}
                     alt="preview"
-                  />
-                  <Button
+                  /> */}
+                  {/* <Button
                     bg={'transparent'}
                     color={'#fff'}
                     _hover={{
@@ -115,7 +115,7 @@ export default function Index() {
                     }
                   >
                     Upload Avatar
-                  </Button>
+                  </Button> */}
                 </Stack>
                 <Stack
                   direction={'row'}
