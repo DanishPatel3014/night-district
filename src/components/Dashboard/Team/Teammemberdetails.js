@@ -12,7 +12,7 @@ import CustomPara from '../../../components/Website/Paragraph/CustomPara';
 import Teamone from '../../../assets/images/Team/t1.jpg';
 import { Icon } from '@chakra-ui/icons';
 
-export default function Teammemberdetails() {
+export default function Teammemberdetails(members) {
   return (
     <>
     <Stack
@@ -37,7 +37,7 @@ export default function Teammemberdetails() {
                       color={'#fff'}
                       fontSize={'15px'}
                     >
-                      Jordan
+                      Hasan Saleem
                     </CustomHeading>
                   </Box>
                 </Box>

@@ -13,12 +13,36 @@ import BorderButton from '../../../components/Website/Buttons/BorderButton';
 import CustomHeading from '../../../components/Website/Headings/CustomHeading';
 import MainDashboard from '../MainDashboard';
 import { AiOutlineCopy } from 'react-icons/ai';
+import { useEffect , useState } from 'react';
+import { POST , GET } from '../../../utilities/ApiProvider.js';
 
 
 
 import Team from '../../../components/Dashboard/Team/index'
 
-export default function index() {
+export default function TeamMember() {
+
+ // setup up state Variables
+
+  const [members, setMembers] = useState([]);
+
+  // get use from App Storage
+
+
+
+    // Add Use Effects
+
+    useEffect(() => {
+      getTeamMembers()
+    }, [])
+
+
+    const getTeamMembers = async() =>
+    {
+      var response = await GET(`/teammember/63ff22721917e3b2783a90ca`);
+      setMembers(response.data)
+    }
+
   return (
     <>
       <MainDashboard>

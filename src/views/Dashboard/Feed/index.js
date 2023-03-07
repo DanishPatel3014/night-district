@@ -7,10 +7,37 @@ import MainDashboard from '../MainDashboard';
 import { HiOutlineDotsHorizontal } from 'react-icons/hi';
 import Feed1 from '../../../assets/images/feed/f1.jpg';
 import { Icon } from '@chakra-ui/icons';
+import { POST , GET } from '../../../utilities/ApiProvider.js';
+import { useEffect , useState } from 'react';
 
-export default function index() {
+export default function Post() {
+
+  // setup up state Variables
+
+  const [posts, setPost] = useState([]);
+
+  // Add Use Effects
+
+  useEffect(() => {
+    getPosts()
+  }, [])
+
+
+  const getPosts = async() =>
+  {
+    var response = await GET('/post');
+    setPost(response.data)
+  }
+
+  
+
+
+
+
+
   return (
     <>
+   
       <MainDashboard>
         <Stack p={'4'} gap={'8'}>
           <Stack direction={'row'} justifyContent={'space-between'}>
@@ -28,111 +55,48 @@ export default function index() {
             </Box>
           </Stack>
           <Stack direction={'row'} gap={'4'}>
-            <Box w={'515px'} bg={'dashbg.100'}>
-              <Stack p={'4'}>
-                <Stack direction={'row'} justifyContent={'space-between'}>
-                  <Box>
-                    <CustomHeading
-                      textAlign={'left'}
-                      color={'#fff'}
-                      fontSize={'25px'}
-                      mb={'0'}
-                    >
-                      Lorem Ipsum Here
-                    </CustomHeading>
-                    <CustomPara color={'brand.800'} fontSize={'13px'}>
-                      Yesterday
-                    </CustomPara>
-                  </Box>
-                  <Box>
-                    <Icon
-                      color={'white'}
-                      fontSize={'30px'}
-                      as={HiOutlineDotsHorizontal}
-                    />
-                  </Box>
-                </Stack>
-                <Stack>
-                  <CustomPara fontSize={'14px'} color={'brand.800'}>
-                    Lorem ipsum dolor sit amet, consectetur elit, sed do eiusmod
-                    tempor incididunt utlabore et dolore magna aliqua.
-                  </CustomPara>
-                </Stack>
-              </Stack>
-              <Stack>
-                <Img src={Feed1} />
-              </Stack>
-            </Box>
-            <Box w={'515px'} bg={'dashbg.100'}>
-              <Stack p={'4'}>
-                <Stack direction={'row'} justifyContent={'space-between'}>
-                  <Box>
-                    <CustomHeading
-                      textAlign={'left'}
-                      color={'#fff'}
-                      fontSize={'25px'}
-                      mb={'0'}
-                    >
-                      Lorem Ipsum Here
-                    </CustomHeading>
-                    <CustomPara color={'brand.800'} fontSize={'13px'}>
-                      Yesterday
-                    </CustomPara>
-                  </Box>
-                  <Box>
-                    <Icon
-                      color={'white'}
-                      fontSize={'30px'}
-                      as={HiOutlineDotsHorizontal}
-                    />
-                  </Box>
-                </Stack>
-                <Stack>
-                  <CustomPara fontSize={'14px'} color={'brand.800'}>
-                    Lorem ipsum dolor sit amet, consectetur elit, sed do eiusmod
-                    tempor incididunt utlabore et dolore magna aliqua.
-                  </CustomPara>
-                </Stack>
-              </Stack>
-              <Stack>
-                <Img src={Feed1} />
-              </Stack>
-            </Box>
-            <Box w={'515px'} bg={'dashbg.100'}>
-              <Stack p={'4'}>
-                <Stack direction={'row'} justifyContent={'space-between'}>
-                  <Box>
-                    <CustomHeading
-                      textAlign={'left'}
-                      color={'#fff'}
-                      fontSize={'25px'}
-                      mb={'0'}
-                    >
-                      Lorem Ipsum Here
-                    </CustomHeading>
-                    <CustomPara color={'brand.800'} fontSize={'13px'}>
-                      Yesterday
-                    </CustomPara>
-                  </Box>
-                  <Box>
-                    <Icon
-                      color={'white'}
-                      fontSize={'30px'}
-                      as={HiOutlineDotsHorizontal}
-                    />
-                  </Box>
-                </Stack>
-                <Stack>
-                  <CustomPara fontSize={'14px'} color={'brand.800'}>
-                    Lorem ipsum dolor sit amet, consectetur elit, sed do eiusmod
-                    tempor incididunt utlabore et dolore magna aliqua.
-                  </CustomPara>
-                </Stack>
-              </Stack>
-              <Stack>
-                <Img src={Feed1} />
-              </Stack>
-            </Box>
+            {
+              posts.map((e) => {
+                return (
+                  <Box w={'515px'} bg={'dashbg.100'}>
+                  <Stack p={'4'}>
+                    <Stack direction={'row'} justifyContent={'space-between'}>
+                      <Box>
+                        <CustomHeading
+                          textAlign={'left'}
+                          color={'#fff'}
+                          fontSize={'25px'}
+                          mb={'0'}
+                        >
+                          {e.title}
+                        </CustomHeading>
+                        <CustomPara color={'brand.800'} fontSize={'13px'}>
+                        {e.createdAt}
+                        </CustomPara>
+                      </Box>
+                      <Box>
+                        <Icon
+                          color={'white'}
+                          fontSize={'30px'}
+                          as={HiOutlineDotsHorizontal}
+                        />
+                      </Box>
+                    </Stack>
+                    <Stack>
+                      <CustomPara fontSize={'14px'} color={'brand.800'}>
+                        {e.description}
+                      </CustomPara>
+                    </Stack>
+                  </Stack>
+                  <Stack>
+                    <Img src={Feed1} />
+                  </Stack>
+                </Box>
+                )
+              })
+            }
+           
+           
           </Stack>
         </Stack>
       </MainDashboard>
