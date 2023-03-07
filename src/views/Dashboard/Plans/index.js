@@ -31,8 +31,7 @@ export default function Index() {
           </Stack>
           <Stack direction={'row'} gap={'4'}>
             <Planwarp />
-            <Planwarp />
-            <Planwarp />
+          
           </Stack>
         </Container>
       </Stack>

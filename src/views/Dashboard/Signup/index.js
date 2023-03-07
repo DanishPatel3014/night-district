@@ -14,7 +14,7 @@ import {
   useToast,
 } from '@chakra-ui/react';
 import React from 'react';
-import { useLocation } from 'react-router-dom';
+import { useLocation, useNavigate } from 'react-router-dom';
 import { HeadFootEnabler } from '../../../utilities/HeadFootEnabler.js';
 import Signupimg from '../../../assets/images/Banner/signup.jpg';
 import CustomHeading from '../../../components/Website/Headings/CustomHeading.js';
@@ -31,17 +31,19 @@ import {
   AiOutlineTwitter,
 } from 'react-icons/ai';
 import axios from 'axios';
+import { baseUrl } from '../../../utilities/Config.js';
 
 export default function Index() {
   const location = useLocation();
+  const navigate = useNavigate();
 
   useEffect(() => {
     HeadFootEnabler(location);
   }, [location]);
 
-  const baseUrl = "http://143.198.171.62:3002/api/";
+  
 
-  console.log(baseUrl);
+  // console.log(baseUrl);
 
   const signupstyle = {
     w: '48%',
@@ -110,8 +112,8 @@ export default function Index() {
 
      let response = await POST(`${baseUrl}users`,Fields )
 
-     console.log(response);
-    //  console.log(baseUrl);
+     
+   
 
       toast({
         description: response.message,
@@ -129,10 +131,9 @@ export default function Index() {
       });
       
       setagreement(false);
-
-
-
       setisLoading(false);
+      navigate('/dashboard/login');
+
     } catch (err) {
       toast({
         description: 'Something went wrong!',
