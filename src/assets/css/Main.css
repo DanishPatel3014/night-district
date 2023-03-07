@@ -117,7 +117,33 @@ input, select{border-color: #000 !important;}
   background-color: transparent;
   opacity: 0;
 }
+.chckbox span.chakra-checkbox__control {
+  position: absolute;
+  background: transparent;
+  padding: 10px 20px;
+  border: none;
+  z-index: -1;
+  width: 100%;
+  height: -webkit-fill-available;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  top: 0;
+}
+span.chakra-checkbox__control[data-checked]
+{
+  background: #db0bcb;
+}
 
+.chckbox {
+  position: relative;
+  z-index: 1;
+}
+
+.chckbox span.chakra-checkbox__control svg {
+  opacity: 0;
+  display: none;
+}
 
 /* @media (max-width: 767px) {
   .footerLinks a{font-size: 14px;margin-top: 10px !important;}
