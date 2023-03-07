@@ -20,6 +20,8 @@ import Profile from '../views/Dashboard/Profile/index.js';
 import BarInformation from '../views/Dashboard/Profile/barinformation';
 import ChooseCategory from '../views/Dashboard/Menu/ChooseCategory';
 import ChooseSubCategory from '../views/Dashboard/Menu/ChooseSubcategory';
+import Addbarinfo from '../views/Dashboard/Bar/Addbarinfo';
+import Addfirstmenu from '../views/Dashboard/Bar/addfirstmenu';
 import Dashboard from '../views/Dashboard/Home/index.js';
 import Menu from '../views/Dashboard/Menu/index.js';
 import Subscription  from '../views/Dashboard/Subscription/index.js';
@@ -31,6 +33,7 @@ import TeamMembers  from '../views/Dashboard/TeamMembers/index.js'
 import Contact from '../views/Dashboard/ContactUs/index.js'
 import Profilesetting from '../views/Dashboard/Profilesetting/index.js'
 import { useEffect } from 'react';
+
 
 
 
@@ -70,6 +73,8 @@ export default function AppRoute() {
                     <Route exact path="/dashboard/profile/barinformation" element={<BarInformation />}></Route>
                     <Route exact path="/dashboard/Menu/choosecategory" element={<ChooseCategory />}></Route>
                     <Route exact path="/dashboard/Menu/Choosesubcategory" element={<ChooseSubCategory />}></Route>
+                    <Route exact path="/dashboard/Bar/addbarinfo" element={<Addbarinfo />}></Route>
+                    <Route exact path="/dashboard/Bar/addfirstmenu" element={<Addfirstmenu />}></Route>
                     <Route exact path="/dashboard" element={<Dashboard />}></Route>
                     <Route exact path="/dashboard/menu" element={<Menu />}></Route>
                     <Route exact path="/dashboard/subscription" element={<Subscription />}></Route>
