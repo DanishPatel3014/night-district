@@ -23,7 +23,7 @@ import { useEffect } from 'react';
 import CustomPara from '../../../components/Website/Paragraph/CustomPara.js';
 import { Link as ReactLink } from 'react-router-dom';
 import { useState } from 'react';
-import { POST } from '../../../utilities/ApiProvider.js';
+import { POST, SetAccessToken } from '../../../utilities/ApiProvider.js';
 import { Icon } from '@chakra-ui/icons';
 import {
   AiOutlineGoogle,
@@ -151,11 +151,13 @@ export default function Index() {
       });
     }
 
-
+    console.log(user);
     if (user === undefined || user === null) {
       navigate('/dashboard/login');
     } else {
       navigate('/dashboard/Plan');
+      console.log(user.verificationToken);
+      SetAccessToken(user.verificationToken);
     }
   }, [user]);
 
