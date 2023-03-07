@@ -26,12 +26,19 @@ import {
   import { POST } from '../../../utilities/ApiProvider.js';
   import { Icon } from '@chakra-ui/icons';
   import { AiOutlineGoogle,AiFillFacebook,AiOutlineTwitter } from 'react-icons/ai';
+  import { useNavigate } from 'react-router'
   
   export default function Index() {
     const location = useLocation();
+
+
+    const navigate = useNavigate();
   
     useEffect(() => {
       HeadFootEnabler(location);
+      
+
+  
     }, [location]);
   
     const signupstyle = {
@@ -45,24 +52,19 @@ import {
     const toast = useToast();
     const [isLoading, setisLoading] = useState(false);
     const [Fields, setFields] = useState({
-      name: '',
-      city: '',
-      email: '',
-      password: '',
-      confirmpassword: '',
+      username: '',
+      password: ''
     });
-  
+
     const submitForm = async () => {
       try {
         setisLoading(true);
         const formData = new FormData();
-  
+
+
         if (
-          Fields.name === '' &&
-          Fields.email === '' &&
-          Fields.password === '' &&
-          Fields.confirmpassword === ''
-        ) {
+          Fields.username === '' &&
+          Fields.password === '') {
           toast({
             status: 'error',
             title: 'Please fill in all the fields to proceed further.',
@@ -75,14 +77,24 @@ import {
         }
   
         formData.append('action', 'CONTACT');
-        formData.append('name', Fields.name);
-        formData.append('email', Fields.email);
+
+        formData.append('username', Fields.username);
         formData.append('password', Fields.password);
-        formData.append('confirmpassword', Fields.confirmpassword);
   
-        let response = await POST('/mailtest/emailer.php', formData, {
+        let response = await POST('/users/login', formData, {
           'Content-Type': 'application/x-www-form-urlencoded',
         });
+
+        console.log(response.Status);
+        debugger;
+        
+        // if (response.status === 'ok') {
+
+        //   getUserData(response.data.access_token, response.data.refresh_token);
+    
+        // }
+
+        
   
         toast({
           description: response.message,
@@ -93,10 +105,8 @@ import {
         });
   
         setFields({
-          name: '',
-          email: '',
-          password: '',
-          confirmpassword: '',
+          username: '',
+          password: ''
         });
   
         setisLoading(false);
@@ -157,23 +167,37 @@ import {
             >
               <Input
                 sx={signupstyle}
-                placeholder={'Name'}
-                type="Name"
+                placeholder={'username'}
+                type="email"
                 _placeholder={{ color: '#fff' }}
-                value={Fields.name}
-                setFields={name => setFields({ ...Fields, name })}
+                value={Fields.username}
+                onChange={e => {
+                  setFields({
+                    ...Fields,
+                    username: e.target.value,
+                  });
+                }
+              }
+                // setFields={username => setFields({ ...Fields, username })}
               />
               <Input
                 sx={signupstyle}
-                placeholder={'Email Address'}
-                type="email"
+                placeholder={'Password'}
+                type="password"
                 _placeholder={{ color: '#fff' }}
-                value={Fields.email}
-                setFields={email => setFields({ ...Fields, email })}
+                value={Fields.password}
+                onChange={e => {
+                  setFields({
+                    ...Fields,
+                    password: e.target.value,
+                  });
+                }
+              
+              }
               />
             
               <Checkbox color={'#fff'} colorScheme="green">
-               Remember Password
+                Remember Password
               </Checkbox>
               <Link w={'48%'} color={'#fff'} as={ReactLink} to={'/'}>Forgot Password?</Link>
             </Stack>
