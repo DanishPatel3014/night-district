@@ -1,5 +1,12 @@
 import React, { useEffect, useState } from 'react';
-import { Box, Flex, ListItem, Stack, UnorderedList, useToast } from '@chakra-ui/react';
+import {
+  Box,
+  Flex,
+  ListItem,
+  Stack,
+  UnorderedList,
+  useToast,
+} from '@chakra-ui/react';
 import CustomHeading from '../../../components/Website/Headings/CustomHeading';
 import CustomPara from '../../../components/Website/Paragraph/CustomPara';
 import { AiOutlineCheck } from 'react-icons/ai';
@@ -8,8 +15,7 @@ import { GET } from '../../../utilities/ApiProvider';
 import { baseUrl } from '../../../utilities/Config';
 
 export default function Planwarp() {
-
-  const toast= useToast()
+  const toast = useToast();
   const [isLoading, setIsLoading] = useState(false);
   useEffect(() => {
     getUserData();
@@ -17,19 +23,15 @@ export default function Planwarp() {
 
   const getUserData = async () => {
     setIsLoading(true);
-    let loginResponse = await GET(`${baseUrl}/membership/?limit=10&page=1`);
-    console.log(loginResponse);
+    let response = await GET(`${baseUrl}membership/?limit=10&page=1`);
+    console.log(response);
     toast({
-      description: loginResponse?.message,
-      status: loginResponse?.status,
+      description: response?.message,
+      status: response?.status,
       isClosable: true,
       duration: 2500,
-      position: 'top-right',
+      position: 'bottom-left',
     });
-    if (loginResponse?.status === 'success') {
-   
-    }
-    setIsLoading(false);
   };
 
   return (
