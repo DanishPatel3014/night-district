@@ -19,10 +19,14 @@ import Signupimg from '../../../assets/images/Banner/signup.jpg';
 import logo from '../../../assets/images/Banner/signlogo.png';
 import { HeadFootEnabler } from '../../../utilities/HeadFootEnabler';
 import CustomPara from '../../../components/Website/Paragraph/CustomPara';
-import { POST } from '../../../utilities/ApiProvider';
+import { POST, PUT } from '../../../utilities/ApiProvider';
+import Startermenu from '../../../components/Dashboard/Headers/Startermenu';
+import { baseUrl } from '../../../utilities/Config';
+import { useSelector } from 'react-redux';
 
 export default function Index() {
   const location = useLocation();
+  const user = useSelector(state => state?.value);
 
   useEffect(() => {
     HeadFootEnabler(location);
@@ -42,11 +46,13 @@ export default function Index() {
   const toast = useToast();
   const [isLoading, setisLoading] = useState(false);
   const [Fields, setFields] = useState({
-    name: '',
+    barName: '',
+    address: '',
     city: '',
-    email: '',
-    password: '',
-    confirmpassword: '',
+    state: '',
+    phone: '',
+    url: '',
+    upload_document: {},
   });
 
   const submitForm = async () => {
@@ -55,10 +61,14 @@ export default function Index() {
       const formData = new FormData();
 
       if (
-        Fields.name === '' &&
-        Fields.email === '' &&
-        Fields.password === '' &&
-        Fields.confirmpassword === ''
+        Fields.barName === '' &&
+        Fields.address === '' &&
+        Fields.city === '' &&
+        Fields.state === '' &&
+        Fields.phone === '' &&
+        Fields.url === '' &&
+        Fields.upload_document === '' 
+
       ) {
         toast({
           status: 'error',
@@ -71,16 +81,9 @@ export default function Index() {
         return;
       }
 
-      formData.append('action', 'CONTACT');
-      formData.append('name', Fields.name);
-      formData.append('email', Fields.email);
-      formData.append('password', Fields.password);
-      formData.append('confirmpassword', Fields.confirmpassword);
-
-      let response = await POST('/mailtest/emailer.php', formData, {
-        'Content-Type': 'application/x-www-form-urlencoded',
-      });
-
+   
+      let response = await PUT(`${baseUrl}bar/barInfo/${user?._id}`,Fields, { authorization: `Bearer ${user?.verificationToken}` } )
+      console.log(response);
       toast({
         description: response.message,
         status: response.status,
@@ -90,10 +93,13 @@ export default function Index() {
       });
 
       setFields({
-        name: '',
-        email: '',
-        password: '',
-        confirmpassword: '',
+        barName: '',
+        address: '',
+        city: '',
+        state: '',
+        phone: '',
+        url: '',
+        upload_document:'',
       });
 
       setisLoading(false);
@@ -123,35 +129,7 @@ export default function Index() {
         <Container maxW={'full'} px={'14'}>
           <Stack direction={'row'} gap={'8'}>
             <Stack w={'30%'}>
-              <CustomHeading
-                color={'white'}
-                textAlign={'left'}
-                fontSize={'25px'}
-              >
-                Complete the following steps
-              </CustomHeading>
-              <UnorderedList listStyleType={'none'} spacing={'3'}>
-                <ListItem>
-                  <Link sx={tblist} as={ReactLink} to={'/'}>
-                    Customize Your Profile
-                  </Link>
-                </ListItem>
-                <ListItem>
-                  <Link sx={tblist} as={ReactLink} to={'/'}>
-                    Add Your Bar’s Information
-                  </Link>
-                </ListItem>
-                <ListItem>
-                  <Link sx={tblist} as={ReactLink} to={'/'}>
-                    Add Your Menu
-                  </Link>
-                </ListItem>
-                <ListItem>
-                  <Link sx={tblist} as={ReactLink} to={'/'}>
-                    Add Your Events
-                  </Link>
-                </ListItem>
-              </UnorderedList>
+            <Startermenu/>
             </Stack>
             <Stack w={'70%'} gap={'8'}>
               <Stack>
@@ -174,52 +152,78 @@ export default function Index() {
                   placeholder={'Name'}
                   type="Name"
                   _placeholder={{ color: '#fff' }}
-                  value={Fields.name}
-                  setFields={name => setFields({ ...Fields, name })}
+                  value={Fields.barName}
+                  onChange={(e)=>{
+                    setFields({
+                      ...Fields,
+                      barName: e.target.value,
+                    });
+                  }}
                 />
                 <Input
                   sx={signupstyle}
-                  placeholder={'Email Address'}
-                  type="email"
+                  placeholder={'Address'}
+                  type="text"
                   _placeholder={{ color: '#fff' }}
-                  value={Fields.email}
-                  setFields={email => setFields({ ...Fields, email })}
+                  value={Fields.address}
+                  onChange={(e)=>{
+                    setFields({
+                      ...Fields,
+                      address: e.target.value,
+                    });
+                  }}
                 />
                 <Input
                   sx={signupstyle}
-                  placeholder={'Password'}
-                  type="Password"
+                  placeholder={'*City'}
+                  type="text"
                   _placeholder={{ color: '#fff' }}
-                  value={Fields.password}
-                  setFields={password => setFields({ ...Fields, password })}
+                  value={Fields.city}
+                  onChange={(e)=>{
+                    setFields({
+                      ...Fields,
+                      city: e.target.value,
+                    });
+                  }}
                 />
                 <Input
                   sx={signupstyle}
-                  placeholder={'Confirm Password'}
+                  placeholder={'#State'}
+                  type="text"
+                  _placeholder={{ color: '#fff' }}
+                  value={Fields.state}
+                  onChange={(e)=>{
+                    setFields({
+                      ...Fields,
+                      state: e.target.value,
+                    });
+                  }}
+                />
+                <Input
+                  sx={signupstyle}
+                  placeholder={'Phone No.'}
+                  type="text"
+                  _placeholder={{ color: '#fff' }}
+                  value={Fields.phone}
+                  onChange={(e)=>{
+                    setFields({
+                      ...Fields,
+                      phone: e.target.value,
+                    });
+                  }}
+                />
+                <Input
+                  sx={signupstyle}
+                  placeholder={'Website Url'}
                   type="ConfirmPassword"
                   _placeholder={{ color: '#fff' }}
-                  value={Fields.confirmpassword}
-                  setFields={confirmpassword =>
-                    setFields({ ...Fields, confirmpassword })
-                  }
-                />
-                <Input
-                  sx={signupstyle}
-                  placeholder={'Password'}
-                  type="Password"
-                  _placeholder={{ color: '#fff' }}
-                  value={Fields.password}
-                  setFields={password => setFields({ ...Fields, password })}
-                />
-                <Input
-                  sx={signupstyle}
-                  placeholder={'Confirm Password'}
-                  type="ConfirmPassword"
-                  _placeholder={{ color: '#fff' }}
-                  value={Fields.confirmpassword}
-                  setFields={confirmpassword =>
-                    setFields({ ...Fields, confirmpassword })
-                  }
+                  value={Fields.url}
+                  onChange={(e)=>{
+                    setFields({
+                      ...Fields,
+                      url: e.target.value,
+                    });
+                  }}
                 />
                 <Box 
                 position={'relative'} 
@@ -243,6 +247,12 @@ export default function Index() {
                    py={'34px'}
                     type={'file'}
                     name={'file'}
+                    onChange={(e)=>{
+                      setFields({
+                        ...Fields,
+                        upload_document: e.target.value,
+                      });
+                    }}
                   />
                 </Box>
                 <Checkbox color={'#fff'} colorScheme="green">

@@ -107,9 +107,7 @@ export default function Index() {
       Fields.role = "bouncer";
 
       let data = Fields;
-      //delete data?.confirm_password;
-
-
+      
      let response = await POST(`${baseUrl}users`,Fields )
 
      
