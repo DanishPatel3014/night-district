@@ -10,7 +10,6 @@ export const POST = async (url, data = {}, headers = {}) => {
     const res = await axios.post(url, data, {
       headers: {
         ...headers,
-        Authorization: `Bearer ${accessToken}`,
       },
       validateStatus: status => {
         // console.log(status);
@@ -29,7 +28,6 @@ export const PUT = async (url, data = {}, headers = {}) => {
     const res = await axios.put(url, data, {
       headers: {
         ...headers,
-        Authorization: `Bearer ${accessToken}`,
       },
       validateStatus: status => {
         // console.log(status);
@@ -48,7 +46,6 @@ export const GET = async (url, headers = {}) => {
     const res = await axios.get(url, {
       headers: {
         ...headers,
-        Authorization: `Bearer ${accessToken}`,
       },
       validateStatus: status => {
         // console.log(status);
@@ -67,7 +64,6 @@ export const DELETE = async (url, headers = {}) => {
     const res = await axios.delete(url, {
       headers: {
         ...headers,
-        Authorization: `Bearer ${accessToken}`,
       },
       validateStatus: status => {
         // console.log(status);

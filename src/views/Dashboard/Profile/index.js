@@ -1,5 +1,5 @@
-import { Container, Img, Button, Stack, Box, UnorderedList, ListItem, Link } from '@chakra-ui/react';
-import { useState, React } from 'react';
+import { Container, Img, Button, Stack, Box, UnorderedList, ListItem, Link, Input } from '@chakra-ui/react';
+import { useState, React, useRef } from 'react';
 import { useLocation } from 'react-router-dom';
 import { HeadFootEnabler } from '../../../utilities/HeadFootEnabler.js';
 import Signupimg from '../../../assets/images/Banner/signup.jpg';
@@ -12,8 +12,14 @@ import { CirclePicker, SketchPicker } from 'react-color';
 import reactCSS from 'reactcss';
 import CustomHeading from '../../../components/Website/Headings/CustomHeading.js';
 import PrimaryBtn from '../../../components/Website/Buttons/PrimaryBtn.js';
+import Startermenu from '../../../components/Dashboard/Headers/Startermenu.js';
 
 export default function Index() {
+
+  const profileImageRef = useRef(null);
+  const [images, setImages] = useState({});
+  const [theImage, setTheImage] = useState(null);
+
   const location = useLocation();
 
   useEffect(() => {
@@ -23,7 +29,11 @@ export default function Index() {
   const defaultSrc = profileimg;
   
 
-  const [blockPickerColor, setBlockPickerColor] = useState('#37d67a');
+  const [blockPickerColor, setBlockPickerColor] = useState('');
+  useEffect(() => {
+    console.log(blockPickerColor);
+  }, [blockPickerColor])
+  
   const [displayColorPicker, setdisplayColorPicker] = useState(false);
   const handleClick = () => {
     setdisplayColorPicker(true);
@@ -47,9 +57,12 @@ export default function Index() {
     left: '0px',
   };
 
-  const tblist = 
-  {
-    color : '#fff',
+
+
+
+  const imageConverter = (file) => {
+    setImages(file)
+    setTheImage(URL.createObjectURL(new Blob(file)));
   }
 
   return (
@@ -63,19 +76,7 @@ export default function Index() {
         <Container maxW={'full'} px={'14'}>
           <Stack direction={'row'} gap={'8'}>
             <Stack w={'30%'}>
-              <CustomHeading
-                color={'white'}
-                textAlign={'left'}
-                fontSize={'25px'}
-              >
-                Complete the following steps
-              </CustomHeading>
-              <UnorderedList listStyleType={'none'} spacing={'3'}>
-                <ListItem><Link sx={tblist} as={ReactLink} to={'/'}>Customize Your Profile</Link></ListItem>
-                <ListItem><Link sx={tblist} as={ReactLink} to={'/'}>Add Your Bar’s Information</Link></ListItem>
-                <ListItem><Link sx={tblist} as={ReactLink} to={'/'}>Add Your Menu</Link></ListItem>
-                <ListItem><Link sx={tblist} as={ReactLink} to={'/'}>Add Your Events</Link></ListItem>
-              </UnorderedList>
+              <Startermenu/>
             </Stack>
             <Stack w={'70%'}>
               <Stack gap={'20'}>
@@ -84,38 +85,31 @@ export default function Index() {
                 </Stack>
 
                 <Stack>
-                  {/* <Img
+                  <Img
+                    cursor={'pointer'}
+                   
                     w={'120px'}
                     h={'120px'}
                     objectFit={'cover'}
                     m={'auto'}
                     borderRadius={'50%'}
-                    src={files?.source || defaultSrc}
+                    src={theImage ?? defaultSrc}
                     alt="preview"
-                  /> */}
-                  {/* <Button
+                  />
+                  <Input type={'file'} display={'none'} ref={profileImageRef}  onChange={(e)=>imageConverter(e.target.files)}  />
+                  <Button
                     bg={'transparent'}
                     color={'#fff'}
                     _hover={{
                       bg: 'transparent',
                       color: 'primaryText.200',
                     }}
-                    onClick={() =>
-                      selectFiles(
-                        { accept: 'image/*' },
-                        ({ name, size, source, file }) => {
-                          console.log('Files Selected', {
-                            name,
-                            size,
-                            source,
-                            file,
-                          });
-                        }
-                      )
-                    }
+                    onClick={()=> profileImageRef?.current.click()}
+                   
+                    
                   >
                     Upload Avatar
-                  </Button> */}
+                  </Button>
                 </Stack>
                 <Stack
                   direction={'row'}
@@ -130,7 +124,7 @@ export default function Index() {
                     >
                       Choose Your Color Preference
                     </CustomHeading>
-                    <CirclePicker width={'60%'} />
+                    <CirclePicker onChange={(color)=>setBlockPickerColor(color.hex)} width={'60%'} />
                   </Box>
                   <Box position={'relative'}>
                     <Button onClick={() => handleClick()}>

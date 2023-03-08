@@ -181,11 +181,11 @@ export default function Index() {
               borderBottom={'0px solid'}
             >
               <Tab sx={settb}>
-                {' '}
+                
                 <Icon sx={cards} as={BsCreditCard} /> Cards
               </Tab>
               <Tab sx={settb}>
-                {' '}
+               
                 <Icon sx={cards} as={FaPaypal} /> Paypal
               </Tab>
             </TabList>
@@ -252,9 +252,10 @@ export default function Index() {
                     of Night District.
                   </Checkbox>
                 </Stack>
-                <Stack mb={'12'}>
-                  <Button
-                    onClick={() => submitForm()}
+                <Stack mb={'12'} textAlign={'center'}>
+                <Link  as={ReactLink} to={'/dashboard/profile'}>
+            <Button
+                 
                     bgColor={'#dc0b9b'}
                     color={'#fff'}
                     borderRadius={6}
@@ -272,6 +273,7 @@ export default function Index() {
                   >
                     Complete Purchase
                   </Button>
+            </Link>
                 </Stack>
               </TabPanel>
               <TabPanel>
@@ -324,20 +326,21 @@ export default function Index() {
                     }
                   />
                   <Checkbox color={'#fff'} colorScheme="green">
-                    I agree to the{' '}
+                    I agree to the
                     <Link sx={lnk} as={ReactLink} to={'./'}>
                       Terms of Service
-                    </Link>{' '}
-                    &{' '}
+                    </Link>
+                    &
                     <Link sx={lnk} as={ReactLink} to={'./'}>
-                      Privacy Policy{' '}
+                      Privacy Policy
                     </Link>
                     of Night District.
                   </Checkbox>
                 </Stack>
                 <Stack mb={'12'}>
-                  <Button
-                    onClick={() => submitForm()}
+            <Link as={ReactLink} to={'/dashboard/profile'}>
+            <Button
+                 
                     bgColor={'#dc0b9b'}
                     color={'#fff'}
                     borderRadius={6}
@@ -355,6 +358,7 @@ export default function Index() {
                   >
                     Complete Purchase
                   </Button>
+            </Link>
                 </Stack>
               </TabPanel>
             </TabPanels>
