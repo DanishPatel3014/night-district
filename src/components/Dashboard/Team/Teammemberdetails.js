@@ -13,7 +13,9 @@ import Teamone from '../../../assets/images/Team/t1.jpg';
 import { Icon } from '@chakra-ui/icons';
 
 export default function Teammemberdetails(members) {
+  console.log(members)
   return (
+
     <>
     <Stack
                 py={'5'}

@@ -1,4 +1,4 @@
-import { React, useEffect } from 'react';
+import { React } from 'react';
 import {
   Container,
   Img,
@@ -8,6 +8,8 @@ import {
   Link,
   Box,
 } from '@chakra-ui/react';
+import { useState , useEffect } from 'react';
+import { GET, POST} from '../../../utilities/ApiProvider.js';
 import { Link as ReactLink, useLocation } from 'react-router-dom';
 import Signupimg from '../../../assets/images/Banner/signup.jpg';
 import logo from '../../../assets/images/Banner/signlogo.png';
@@ -15,11 +17,32 @@ import { HeadFootEnabler } from '../../../utilities/HeadFootEnabler';
 import CustomPara from '../../../components/Website/Paragraph/CustomPara';
 import CustomHeading from '../../../components/Website/Headings/CustomHeading';
 import cat1 from '../../../assets/images/menu/c1.jpg';
+import { useSelector } from 'react-redux';
+import { baseUrl } from '../../../utilities/Config.js';
 
 export default function ChooseCategory() {
   const location = useLocation();
+  const [category, setCategory] = useState([]);
+  const [isLoading, setIsLoading] = useState(false);
+  const user = useSelector(state => state?.value);
+
+
+  // useEffect(() => {
+  //   console.log(user);
+  //   getUserData();
+  // }, [user]);
+
+  const getUserData = async () => {
+    setIsLoading(true);
+    let response = await GET(`${baseUrl}admin/category`, {
+      authorization: `Bearer ${user?.verificationToken}`,
+    });
+    console.log(response);
+    setCategory(response.data);
+  };
 
   useEffect(() => {
+    getUserData();
     HeadFootEnabler(location);
   }, [location]);
 

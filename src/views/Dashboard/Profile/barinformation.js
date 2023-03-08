@@ -82,7 +82,7 @@ export default function Index() {
       }
 
    
-      let response = await PUT(`${baseUrl}bar/barInfo/${user?._id}`,Fields, { authorization: `Bearer ${user?.verificationToken}` } )
+      let response = await PUT(`${baseUrl}bar/barInfo/6400707e6505bb0267cefee9`,Fields, { authorization: `Bearer ${user?.verificationToken}` } )
       console.log(response);
       toast({
         description: response.message,
