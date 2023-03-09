@@ -38,7 +38,7 @@ export default function TeamDetail() {
                 {m.name}
               </CustomHeading>
             </Box>
-            <Stack h={'600px'} overflow={'scroll'} bg={'dashbg.100'} p={'4'}>
+            <Stack h={'400px'} overflow={'scroll'} bg={'dashbg.100'} p={'4'}>
 
               {
                 m.members.map((e) => {
