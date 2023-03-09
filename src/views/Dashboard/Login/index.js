@@ -92,7 +92,7 @@ export default function Index() {
         }
       }
 
-      dispatch(updateUser(response.data));
+      dispatch(loadUser(response.data));
       localStorage.setItem('user', JSON.stringify(response.data));
 
       toast({

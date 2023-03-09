@@ -16,12 +16,14 @@ import { GET, POST } from '../../../utilities/ApiProvider';
 import { baseUrl } from '../../../utilities/Config';
 import PrimaryBtn from '../../Website/Buttons/PrimaryBtn';
 import { useNavigate } from 'react-router-dom';
-import { useSelector } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
+import { updateBarInfo } from '../../../reducers/useReducers';
 
 export default function Planwarp() {
   const toast = useToast();
   const user = useSelector(state => state?.value);
   const navigate = useNavigate();
+  const dispatch = useDispatch();
   const [isLoading, setIsLoading] = useState(false);
   const [packages, setpackages] = useState([]);
 
@@ -55,6 +57,7 @@ export default function Planwarp() {
       duration: 2500,
     });
     if (response.status === 'success') {
+      dispatch(updateBarInfo(response.data.barInfo))
       navigate('/dashboard/equipment');
     } else {
       navigate('/dashboard/Plan');

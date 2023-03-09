@@ -31,6 +31,9 @@ export default function Index() {
   useEffect(() => {
     HeadFootEnabler(location);
   }, [location]);
+  useEffect(() => {
+    console.log(user);
+  }, [user]);
 
   const tblist = {
     color: '#fff',
@@ -67,8 +70,7 @@ export default function Index() {
         Fields.state === '' &&
         Fields.phone === '' &&
         Fields.url === '' &&
-        Fields.upload_document === '' 
-
+        Fields.upload_document === ''
       ) {
         toast({
           status: 'error',
@@ -81,8 +83,11 @@ export default function Index() {
         return;
       }
 
-   
-      let response = await PUT(`${baseUrl}bar/barInfo/6400707e6505bb0267cefee9`,Fields, { authorization: `Bearer ${user?.verificationToken}` } )
+      let response = await PUT(
+        `${baseUrl}bar/barInfo/${user?.barinfo}`,
+        Fields,
+        { authorization: `Bearer ${user?.verificationToken}` }
+      );
       console.log(response);
       toast({
         description: response.message,
@@ -99,7 +104,7 @@ export default function Index() {
         state: '',
         phone: '',
         url: '',
-        upload_document:'',
+        upload_document: '',
       });
 
       setisLoading(false);
@@ -129,7 +134,7 @@ export default function Index() {
         <Container maxW={'full'} px={'14'}>
           <Stack direction={'row'} gap={'8'}>
             <Stack w={'30%'}>
-            <Startermenu/>
+              <Startermenu />
             </Stack>
             <Stack w={'70%'} gap={'8'}>
               <Stack>
@@ -153,7 +158,7 @@ export default function Index() {
                   type="Name"
                   _placeholder={{ color: '#fff' }}
                   value={Fields.barName}
-                  onChange={(e)=>{
+                  onChange={e => {
                     setFields({
                       ...Fields,
                       barName: e.target.value,
@@ -166,7 +171,7 @@ export default function Index() {
                   type="text"
                   _placeholder={{ color: '#fff' }}
                   value={Fields.address}
-                  onChange={(e)=>{
+                  onChange={e => {
                     setFields({
                       ...Fields,
                       address: e.target.value,
@@ -179,7 +184,7 @@ export default function Index() {
                   type="text"
                   _placeholder={{ color: '#fff' }}
                   value={Fields.city}
-                  onChange={(e)=>{
+                  onChange={e => {
                     setFields({
                       ...Fields,
                       city: e.target.value,
@@ -192,7 +197,7 @@ export default function Index() {
                   type="text"
                   _placeholder={{ color: '#fff' }}
                   value={Fields.state}
-                  onChange={(e)=>{
+                  onChange={e => {
                     setFields({
                       ...Fields,
                       state: e.target.value,
@@ -205,7 +210,7 @@ export default function Index() {
                   type="text"
                   _placeholder={{ color: '#fff' }}
                   value={Fields.phone}
-                  onChange={(e)=>{
+                  onChange={e => {
                     setFields({
                       ...Fields,
                       phone: e.target.value,
@@ -218,21 +223,21 @@ export default function Index() {
                   type="ConfirmPassword"
                   _placeholder={{ color: '#fff' }}
                   value={Fields.url}
-                  onChange={(e)=>{
+                  onChange={e => {
                     setFields({
                       ...Fields,
                       url: e.target.value,
                     });
                   }}
                 />
-                <Box 
-                position={'relative'} 
-                overflow={'hidden'}
-                w={'full'}
-                border={'1px dashed #fff'}
-                py={'8'}
-                textAlign={'center'}
-                borderRadius={'6'}
+                <Box
+                  position={'relative'}
+                  overflow={'hidden'}
+                  w={'full'}
+                  border={'1px dashed #fff'}
+                  py={'8'}
+                  textAlign={'center'}
+                  borderRadius={'6'}
                 >
                   <Button>Upload a file</Button>
                   <Input
@@ -243,11 +248,11 @@ export default function Index() {
                     top={'0'}
                     h={'100%'}
                     cursor={'pointer'}
-                   color={'white'}
-                   py={'34px'}
+                    color={'white'}
+                    py={'34px'}
                     type={'file'}
                     name={'file'}
-                    onChange={(e)=>{
+                    onChange={e => {
                       setFields({
                         ...Fields,
                         upload_document: e.target.value,
@@ -256,13 +261,13 @@ export default function Index() {
                   />
                 </Box>
                 <Checkbox color={'#fff'} colorScheme="green">
-                  I agree to the{' '}
+                  I agree to the
                   <Link sx={lnk} as={ReactLink} to={'./'}>
                     Terms of Service
-                  </Link>{' '}
-                  &{' '}
+                  </Link>
+                  &
                   <Link sx={lnk} as={ReactLink} to={'./'}>
-                    Privacy Policy{' '}
+                    Privacy Policy
                   </Link>
                   of Night District.
                 </Checkbox>
