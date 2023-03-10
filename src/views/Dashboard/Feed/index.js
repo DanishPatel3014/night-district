@@ -16,6 +16,7 @@ import {
   Textarea,
   FormControl,
   Checkbox,
+  useToast
 } from '@chakra-ui/react';
 import React from 'react';
 import CustomHeading from '../../../components/Website/Headings/CustomHeading';
@@ -33,6 +34,10 @@ export default function Post() {
   // setup up state Variables
 
   const [posts, setPost] = useState([]);
+  const [Hashtags, setHashtags] = useState([]);
+  const [hashtagData, sethashtagData] = useState([]);
+  const toast = useToast();
+  const [isLoading, setisLoading] = useState(false);
 
   const OverlayOne = () => (
     <ModalOverlay
@@ -46,6 +51,7 @@ export default function Post() {
   // Add Use Effects
 
   useEffect(() => {
+    getHastags();
     getPosts();
   }, []);
 
@@ -53,10 +59,64 @@ export default function Post() {
     var response = await GET('/post');
     setPost(response.data);
   };
+  const getHastags = async () => {
+    var response = await GET('/admin/hashtag');
+    setHashtags(response.data);
+  };
 
   const [Fields, setFields] = useState({
     upload_document: {},
   });
+  let hastagArray = [];
+  const submitForm = async () => {
+    try {
+      const formData = new FormData();
+
+      if (Fields.title === '' && Fields.description === '') {
+        toast({
+          status: 'error',
+          title: 'Please fill in all the fields to proceed further.',
+          duration: 7000,
+          isClosable: true,
+          position: 'bottom-left',
+        });
+        return;
+      }
+
+
+      formData.append('title', Fields.heading);
+      formData.append('description', Fields.description);
+      formData.append('hastags',hashtagData);
+
+      var response = await POST('/post', formData);
+
+
+
+      toast({
+        description: response.message,
+        status: response.status,
+        isClosable: true,
+        position: 'bottom-left',
+        duration: 2500,
+      });
+
+      setFields({
+        username: '',
+        password: '',
+      });
+
+      setisLoading(false);
+    } catch (err) {
+      console.log(err);
+      toast({
+        description: 'Something went wrong!',
+        status: 'error',
+        isClosable: true,
+        position: 'bottom-left',
+        duration: 2500,
+      });
+    }
+  };
 
   const signupstyle = {
     outline: '1px solid #fff',
@@ -111,23 +171,18 @@ export default function Post() {
                   </Box>
                   <Input
                     sx={signupstyle}
-                    placeholder={'Enter Heading'}
+                    placeholder={'Title'}
                     type="Name"
                     _placeholder={{ color: '#fff' }}
-                    value={Fields.heading}
-                    onChange={e => {
-                      setFields({
-                        ...Fields,
-                        heading: e.target.value,
-                      });
-                    }}
+                    value={Fields.title}
+                   
                   />
                   <Textarea
                     sx={signupstyle}
-                    placeholder={'Enter Heading'}
+                    placeholder={'Description'}
                     type="Name"
                     _placeholder={{ color: '#fff' }}
-                    value={Fields.discrpition}
+                    value={Fields.description}
                     onChange={e => {
                       setFields({
                         ...Fields,
@@ -156,6 +211,7 @@ export default function Post() {
                         placeholder="Search"
                       />
                       <Button
+                        onClick={() => submitForm()}
                         bg={'transparent'}
                         right={'0'}
                         position={'absolute'}
@@ -175,97 +231,40 @@ export default function Post() {
                     flexWrap={'wrap'}
                     color={'#fff'}
                   >
-                    <Checkbox
-                      border={'1px solid #fff'}
-                      position={'relative'}
-                      px={'4'}
-                      py={'1'}
-                      borderRadius={'6'}
-                      className="chckbox"
-                    >
-                      <Stack direction={'row'}>
-                        <Icon
-                          color={'white'}
-                          fontSize={'20px'}
-                          as={AiOutlinePlusCircle}
-                        />
-                        <Text>Checkbox One</Text>
-                      </Stack>
-                    </Checkbox>
-                    <Checkbox
-                      border={'1px solid #fff'}
-                      position={'relative'}
-                      px={'4'}
-                      py={'1'}
-                      borderRadius={'6'}
-                      className="chckbox"
-                    >
-                      <Stack direction={'row'}>
-                        <Icon
-                          color={'white'}
-                          fontSize={'20px'}
-                          as={AiOutlinePlusCircle}
-                        />
-                        <Text>Checkbox Two</Text>
-                      </Stack>
-                    </Checkbox>
-                    <Checkbox
-                      border={'1px solid #fff'}
-                      position={'relative'}
-                      px={'4'}
-                      py={'1'}
-                      borderRadius={'6'}
-                      className="chckbox"
-                    >
-                      <Stack direction={'row'}>
-                        <Icon
-                          color={'white'}
-                          fontSize={'20px'}
-                          as={AiOutlinePlusCircle}
-                        />
-                        <Text>Checkbox</Text>
-                      </Stack>
-                    </Checkbox>
-                    <Checkbox
-                      border={'1px solid #fff'}
-                      position={'relative'}
-                      px={'4'}
-                      py={'1'}
-                      borderRadius={'6'}
-                      className="chckbox"
-                    >
-                      <Stack direction={'row'}>
-                        <Icon
-                          color={'white'}
-                          fontSize={'20px'}
-                          as={AiOutlinePlusCircle}
-                        />
-                        <Text>Checkbox</Text>
-                      </Stack>
-                    </Checkbox>
-                    <Checkbox
-                      border={'1px solid #fff'}
-                      position={'relative'}
-                      px={'4'}
-                      py={'1'}
-                      borderRadius={'6'}
-                      className="chckbox"
-                    >
-                      <Stack direction={'row'}>
-                        <Icon
-                          color={'white'}
-                          fontSize={'20px'}
-                          as={AiOutlinePlusCircle}
-                        />
-                        <Text>Checkbox</Text>
-                      </Stack>
-                    </Checkbox>
+                    {Hashtags.map(e => {
+                          return (
+                            <Checkbox
+                            border={'1px solid #fff'}
+                            position={'relative'}
+                            px={'4'}
+                            py={'1'}
+                            borderRadius={'6'}
+                            className="chckbox"
+                            value = {e._id}
+                            onChange={e => {
+                              
+                              hashtagData.push(e.target.value)
+                              sethashtagData(hashtagData)
+                            }}
+                          >
+                            <Stack direction={'row'}>
+                              <Icon
+                                color={'white'}
+                                fontSize={'20px'}
+                                as={AiOutlinePlusCircle}
+                              />
+                              <Text>{e.name}</Text>
+                            </Stack>
+                          </Checkbox>
+                          );
+                        })}
+                    
                   </Stack>
                 </Stack>
             </ModalBody>
             <ModalFooter>
               <Stack direction={'row'} w={'full'} justifyContent={'center'}>
-                <Button bg={'pHeading.100'} color={'#fff'} px={'14'}>
+                <Button onClick={submitForm} bg={'pHeading.100'} color={'#fff'} px={'14'}>
                   Post
                 </Button>
                 <Button onClick={onClose}>Discard</Button>
