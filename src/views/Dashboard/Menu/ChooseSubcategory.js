@@ -15,7 +15,7 @@ export default function ChooseSubcategory(props) {
   const location = useLocation();
   const state = location.state;
   console.log(state);
-  debugger;
+
   
 
 
@@ -70,7 +70,9 @@ export default function ChooseSubcategory(props) {
                 </Button>
               </FormControl>
               <Stack direction={'row'} flexWrap={'wrap'} spacing={'0'} gap={'3'}>
-              <Link marginLeft={'0'}>
+              {state.map((v, i) => {
+                          return (
+              <Link key={i} marginLeft={'0'}>
                     <Box
                       position={'relative'}
                       pr={'4'}
@@ -96,184 +98,16 @@ export default function ChooseSubcategory(props) {
                       }}
                     >
                       <CustomHeading
-                        fontSize={'25px'}
-                        fontWeight={'700'}
+                        fontSize={'20px'}
+                        fontWeight={'500'}
                         color={'#fff'}
                       >
-                        Spirits
+                        {v.menu_name}
                       </CustomHeading>
                     </Box>
                   </Link>
-                  <Link marginLeft={'0'}>
-                    <Box
-                      position={'relative'}
-                      pr={'4'}
-                      display={'flex'}
-                      justifyContent={'right'}
-                      alignItems={'flex-end'}
-                      borderRadius={'8px'}
-                      h={'125px'}
-                      w={'198px'}
-                      zIndex={'1'}
-                      backgroundImage={cat1}
-                      _before={{
-                        content: "''",
-                        w: '100%',
-                        h: '100%',
-                        position: 'absolute',
-                        bg: '#000',
-                        right: '0',
-                        left: '0',
-                        zIndex: '-1',
-                        borderRadius: '6px',
-                        opacity: '0.6',
-                      }}
-                    >
-                      <CustomHeading
-                        fontSize={'25px'}
-                        fontWeight={'700'}
-                        color={'#fff'}
-                      >
-                        Spirits
-                      </CustomHeading>
-                    </Box>
-                  </Link>
-                  <Link marginLeft={'0'}>
-                    <Box
-                      position={'relative'}
-                      pr={'4'}
-                      display={'flex'}
-                      justifyContent={'right'}
-                      alignItems={'flex-end'}
-                      borderRadius={'8px'}
-                      h={'125px'}
-                      w={'198px'}
-                      zIndex={'1'}
-                      backgroundImage={cat1}
-                      _before={{
-                        content: "''",
-                        w: '100%',
-                        h: '100%',
-                        position: 'absolute',
-                        bg: '#000',
-                        right: '0',
-                        left: '0',
-                        zIndex: '-1',
-                        borderRadius: '6px',
-                        opacity: '0.6',
-                      }}
-                    >
-                      <CustomHeading
-                        fontSize={'25px'}
-                        fontWeight={'700'}
-                        color={'#fff'}
-                      >
-                        Spirits
-                      </CustomHeading>
-                    </Box>
-                  </Link>
-                  <Link marginLeft={'0'}>
-                    <Box
-                      position={'relative'}
-                      pr={'4'}
-                      display={'flex'}
-                      justifyContent={'right'}
-                      alignItems={'flex-end'}
-                      borderRadius={'8px'}
-                      h={'125px'}
-                      w={'198px'}
-                      zIndex={'1'}
-                      backgroundImage={cat1}
-                      _before={{
-                        content: "''",
-                        w: '100%',
-                        h: '100%',
-                        position: 'absolute',
-                        bg: '#000',
-                        right: '0',
-                        left: '0',
-                        zIndex: '-1',
-                        borderRadius: '6px',
-                        opacity: '0.6',
-                      }}
-                    >
-                      <CustomHeading
-                        fontSize={'25px'}
-                        fontWeight={'700'}
-                        color={'#fff'}
-                      >
-                        Spirits
-                      </CustomHeading>
-                    </Box>
-                  </Link>
-                  <Link marginLeft={'0'}>
-                    <Box
-                      position={'relative'}
-                      pr={'4'}
-                      display={'flex'}
-                      justifyContent={'right'}
-                      alignItems={'flex-end'}
-                      borderRadius={'8px'}
-                      h={'125px'}
-                      w={'198px'}
-                      zIndex={'1'}
-                      backgroundImage={cat1}
-                      _before={{
-                        content: "''",
-                        w: '100%',
-                        h: '100%',
-                        position: 'absolute',
-                        bg: '#000',
-                        right: '0',
-                        left: '0',
-                        zIndex: '-1',
-                        borderRadius: '6px',
-                        opacity: '0.6',
-                      }}
-                    >
-                      <CustomHeading
-                        fontSize={'25px'}
-                        fontWeight={'700'}
-                        color={'#fff'}
-                      >
-                        Spirits
-                      </CustomHeading>
-                    </Box>
-                  </Link>
-                  <Link marginLeft={'0'}>
-                    <Box
-                      position={'relative'}
-                      pr={'4'}
-                      display={'flex'}
-                      justifyContent={'right'}
-                      alignItems={'flex-end'}
-                      borderRadius={'8px'}
-                      h={'125px'}
-                      w={'198px'}
-                      zIndex={'1'}
-                      backgroundImage={cat1}
-                      _before={{
-                        content: "''",
-                        w: '100%',
-                        h: '100%',
-                        position: 'absolute',
-                        bg: '#000',
-                        right: '0',
-                        left: '0',
-                        zIndex: '-1',
-                        borderRadius: '6px',
-                        opacity: '0.6',
-                      }}
-                    >
-                      <CustomHeading
-                        fontSize={'25px'}
-                        fontWeight={'700'}
-                        color={'#fff'}
-                      >
-                        Spirits
-                      </CustomHeading>
-                    </Box>
-                  </Link>
+                 );
+                })}
               </Stack>
               </Stack>
             </Stack>
