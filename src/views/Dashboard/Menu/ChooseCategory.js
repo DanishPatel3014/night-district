@@ -34,7 +34,7 @@ export default function ChooseCategory() {
     });
     console.log(response.data);
     setmenu(response.data);
-    dispatch(updateItemInfo(response.data.items))
+    // dispatch(updateItemInfo(response.data.items))
   };
 
   useEffect(() => {
