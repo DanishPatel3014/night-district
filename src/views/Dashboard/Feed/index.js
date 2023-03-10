@@ -306,7 +306,7 @@ export default function Post() {
               </Button>
             </Box>
           </Stack>
-          <Stack direction={'row'} gap={'4'}>
+          <Stack direction={'row'} flexWrap={'wrap'} spacing={'0'} gap={'4'}>
             {posts.map(e => {
               return (
                 <Box w={'515px'} bg={'dashbg.100'}>
