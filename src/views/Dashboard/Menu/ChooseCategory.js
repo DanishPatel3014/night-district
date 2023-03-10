@@ -37,7 +37,7 @@ export default function ChooseCategory() {
     let response = await GET(`${baseUrl}admin/category`, {
       authorization: `Bearer ${user?.verificationToken}`,
     });
-    console.log(response);
+
     setCategory(response.data);
   };
 

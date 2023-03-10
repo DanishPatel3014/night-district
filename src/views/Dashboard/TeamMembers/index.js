@@ -17,7 +17,8 @@ import {
   useDisclosure,
   Checkbox,
   Textarea,
-  Img
+  Img,
+  Select
 } from '@chakra-ui/react';
 import React, { useRef } from 'react';
 import BorderButton from '../../../components/Website/Buttons/BorderButton';
@@ -50,6 +51,7 @@ export default function TeamMember() {
  // setup up state Variables
 
   const [members, setMembers] = useState([]);
+  const [roles, setRoles] = useState([]);
 
   // get use from App Storage 
 
@@ -66,6 +68,7 @@ export default function TeamMember() {
     // Add Use Effects
 
     useEffect(() => {
+      getEmployee()
       getTeamMembers()
     }, [])
 
@@ -78,6 +81,14 @@ export default function TeamMember() {
       var response = await GET(`/teammember/63ff22721917e3b2783a90ca`);
       setMembers(response.data)
     }
+    // get Employeed
+
+    const getEmployee = async() =>
+    {
+      var response = await GET(`/api/roles`);
+      console.log(roles)
+      setRoles(response.data)
+    } 
 
     const signupstyle = {
       outline: '1px solid #fff',
@@ -130,7 +141,7 @@ export default function TeamMember() {
             
                   <Input
                     sx={signupstyle}
-                    placeholder={'Enter Heading'}
+                    placeholder={'Name'}
                     type="text"
                     _placeholder={{ color: '#fff' }}
                     value={Fields.name}
@@ -143,8 +154,8 @@ export default function TeamMember() {
                   />
                  <Input
                     sx={signupstyle}
-                    placeholder={'User Name'}
-                    type="text"
+                    placeholder={'username'}
+                    type="username"
                     _placeholder={{ color: '#fff' }}
                     value={Fields.username}
                     onChange={e => {
@@ -167,6 +178,12 @@ export default function TeamMember() {
                       });
                     }}
                   />
+                  <Select sx={signupstyle} placeholder='Select option' _placeholder={{ color: '#fff' }}>
+    
+                    <option value='option1'>Option 1</option>
+                    <option value='option2'>Option 2</option>
+                    <option value='option3'>Option 3</option>
+                  </Select>
                 </Stack>
             </ModalBody>
             <ModalFooter>
