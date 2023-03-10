@@ -54,7 +54,7 @@ export default function index() {
 
 
           <Stack>
-            <Stack direction={'row'} gap={'4'}>
+            <Stack flexWrap={'wrap'} direction={'row'} gap={'4'}>
               <Box w={'242px'}>
                 <Img src={menu1} />
                 <Stack p={'3'} bg={'dashbg.100'}>
@@ -351,7 +351,7 @@ export default function index() {
                 Kentucky Bourbon
               </CustomHeading>
             </Box>
-          <Stack direction={'row'} gap={'4'}>
+          <Stack flexWrap={'wrap'}  direction={'row'} gap={'4'}>
               <Box w={'242px'}>
                 <Img src={menu1} />
                 <Stack p={'3'} bg={'dashbg.100'}>
