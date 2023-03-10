@@ -10,6 +10,9 @@ import { useEffect, useState } from 'react';
 
 export default function TeamDetail() {
 
+  let bar = localStorage.getItem('user');
+  bar = JSON.parse(bar)
+
   const [members, setMembers] = useState([]);
 
   useEffect(() => {
@@ -18,7 +21,7 @@ export default function TeamDetail() {
 
 
   const getTeamMembers = async () => {
-    var response = await GET(`/teammember/63ff22721917e3b2783a90ca`);
+    var response = await GET(`/teammember/${bar.barInfo}`);
     setMembers(response.data)
   }
 

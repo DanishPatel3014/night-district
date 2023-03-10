@@ -1,19 +1,23 @@
 import { useEffect, React } from 'react';
-import { Box, Button, Container, FormControl, Img, Input, Stack, Link, } from '@chakra-ui/react';
+import { Box, Button, Container, FormControl, Img, Input, Stack, Link} from '@chakra-ui/react';
 import Signupimg from '../../../assets/images/Banner/signup.jpg';
 import logo from '../../../assets/images/Banner/signlogo.png';
 import CustomHeading from '../../../components/Website/Headings/CustomHeading';
 import CustomPara from '../../../components/Website/Paragraph/CustomPara';
-import { useLocation } from 'react-router-dom';
 import { HeadFootEnabler } from '../../../utilities/HeadFootEnabler';
 import { AiOutlineSearch } from 'react-icons/ai';
 import { Icon } from '@chakra-ui/icons';
 import cat1 from '../../../assets/images/menu/c1.jpg';
 import PrimaryBtn from '../../../components/Website/Buttons/PrimaryBtn';
+import { useLocation } from "react-router-dom";
 
-export default function ChooseSubcategory() {
-  
+export default function ChooseSubcategory(props) {
   const location = useLocation();
+  const state = location.state;
+  console.log(state);
+  debugger;
+  
+
 
   useEffect(() => {
     HeadFootEnabler(location);

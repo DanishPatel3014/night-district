@@ -31,7 +31,7 @@ export default function Teammemberdetails(members) {
                       marginBottom={0}
                       color={'brand.800'}
                     >
-                      Name
+                      {members.name}
                     </CustomPara>
                     <CustomHeading
                       textAlign={'left'}

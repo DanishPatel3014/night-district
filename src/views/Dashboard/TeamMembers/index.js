@@ -18,7 +18,8 @@ import {
   Checkbox,
   Textarea,
   Img,
-  Select
+  Select,
+  useToast
 } from '@chakra-ui/react';
 import React, { useRef } from 'react';
 import BorderButton from '../../../components/Website/Buttons/BorderButton';
@@ -36,9 +37,15 @@ import CustomPara from '../../../components/Website/Paragraph/CustomPara';
 export default function TeamMember() {
 
 
+  let bar = localStorage.getItem('user');
+  bar = JSON.parse(bar)
+
+
   const profileImageRef = useRef(null);
   const [images, setImages] = useState({});
   const [theImage, setTheImage] = useState(null);
+  const toast = useToast();
+  const [isLoading, setisLoading] = useState(false);
 
 
   
@@ -78,17 +85,82 @@ export default function TeamMember() {
   
     const getTeamMembers = async() =>
     {
-      var response = await GET(`/teammember/63ff22721917e3b2783a90ca`);
+      var response = await GET(`/teammember/${bar.barInfo}`);
       setMembers(response.data)
     }
     // get Employeed
 
     const getEmployee = async() =>
     {
-      var response = await GET(`/api/roles`);
-      console.log(roles)
+      var response = await GET(`/roles`);
       setRoles(response.data)
+
     } 
+
+    const submitForm = async () => {
+        try
+        {
+            setisLoading(true);
+            const formData = new FormData();
+            if (
+              Fields.name === '' &&
+              Fields.username === '' &&
+              Fields.password === '' &&
+              Fields.type === '' &&
+              Fields.type === ''
+            ) {
+              toast({
+                status: 'error',
+                title: 'Please fill in all the fields to proceed further.',
+                duration: 7000,
+                isClosable: true,
+                position: 'bottom-left',
+              });
+              setisLoading(false);
+              return;
+            }
+       
+
+     
+            formData.append('name', Fields.name);
+            formData.append('username', Fields.username);
+            formData.append('password', Fields.password);
+            formData.append('email', Fields.email);
+            formData.append('bar', bar.barInfo);
+            formData.append('type', Fields.type);
+
+            let response = await POST('/teammember', formData, {
+              'Content-Type': 'application/x-www-form-urlencoded',
+            });
+            toast({
+              description: response.message,
+              status: response.status,
+              isClosable: true,
+              position: 'bottom-left',
+              duration: 2500,
+            });
+      
+            setFields({
+              name: '',
+              city: '',
+              email: '',
+              phone: '',
+              message: '',
+            });
+
+            setisLoading(false);
+        }
+        catch(error)
+        {
+          toast({
+            description: 'Something went wrong!',
+            status: 'error',
+            isClosable: true,
+            position: 'bottom-left',
+            duration: 2500,
+          });
+        }
+    }
 
     const signupstyle = {
       outline: '1px solid #fff',
@@ -167,6 +239,19 @@ export default function TeamMember() {
                   />
                   <Input
                     sx={signupstyle}
+                    placeholder={'email'}
+                    type="email"
+                    _placeholder={{ color: '#fff' }}
+                    value={Fields.email}
+                    onChange={e => {
+                      setFields({
+                        ...Fields,
+                        email: e.target.value,
+                      });
+                    }}
+                  />
+                  <Input
+                    sx={signupstyle}
                     placeholder={'password'}
                     type="Password"
                     _placeholder={{ color: '#fff' }}
@@ -178,17 +263,31 @@ export default function TeamMember() {
                       });
                     }}
                   />
-                  <Select sx={signupstyle} placeholder='Select option' _placeholder={{ color: '#fff' }}>
-    
-                    <option value='option1'>Option 1</option>
-                    <option value='option2'>Option 2</option>
-                    <option value='option3'>Option 3</option>
+                  <Select onChange={e => {
+                      console.log(e.target.value)
+                      setFields({
+                        ...Fields,
+                        type: e.target.value,
+                      });
+                    }} sx={signupstyle} placeholder='Select option' _placeholder={{ color: '#fff' }}>
+
+                    {
+                        roles.map((e) => {
+                          return (
+                            <>
+                            <option value={e._id} > {e.name} </option>
+                            </>
+                          )
+                        })
+                    }
+      
+                    
                   </Select>
                 </Stack>
             </ModalBody>
             <ModalFooter>
               <Stack direction={'row'} w={'full'} justifyContent={'center'}>
-                <Button bg={'pHeading.100'} color={'#fff'} px={'14'}>
+                <Button onClick={() => submitForm()} bg={'pHeading.100'} color={'#fff'} px={'14'}>
                   Save Changes
                 </Button>
                 <Button onClick={onClose}>Discard</Button>

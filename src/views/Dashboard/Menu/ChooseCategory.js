@@ -91,7 +91,7 @@ export default function ChooseCategory() {
                           
                       return (
 
-                          <Link as={ReactLink} items={v.items} to={'/dashboard/Menu/Choosesubcategory'} key={i} marginLeft={'0'}>
+                          <Link as={ReactLink} state={v.items} to={'/dashboard/Menu/Choosesubcategory'} key={i} marginLeft={'0'}>
                             <Box
                               position={'relative'}
                               pr={'4'}
