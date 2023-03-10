@@ -12,10 +12,12 @@ import cat1 from '../../../assets/images/menu/c1.jpg';
 import PrimaryBtn from '../../../components/Website/Buttons/PrimaryBtn';
 
 export default function ChooseSubcategory() {
+  
   const location = useLocation();
 
   useEffect(() => {
     HeadFootEnabler(location);
+    
   }, [location]);
 
   return (

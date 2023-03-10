@@ -133,7 +133,7 @@ export default function Index() {
       >
         <Container maxW={'full'} px={'14'}>
           <Stack direction={'row'} gap={'8'}>
-            <Stack w={'30%'}>
+            <Stack w={'350px'}>
               <Startermenu />
             </Stack>
             <Stack w={'70%'} gap={'8'}>
@@ -294,7 +294,7 @@ export default function Index() {
                 </Button>
               </Stack>
             </Stack>
-            <Stack w={'30%'}></Stack>
+            <Stack w={'350px'}></Stack>
           </Stack>
         </Container>
       </Stack>
