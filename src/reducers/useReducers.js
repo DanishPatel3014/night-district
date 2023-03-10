@@ -33,9 +33,7 @@ const userReducer = createSlice({
         updateBarInfo: (state, action) => {
             state.value.barinfo = action.payload;
         },
-        updateItemInfo: (state, action) => {
-            state.value.items = action.payload;
-        },
+        
         // loadLocalStorage: (state, action) => {
         //     state.value = action.payload;
         //     localStorage.setItem('user', JSON.stringify(action.payload))
@@ -66,5 +64,5 @@ const userReducer = createSlice({
 })
 
 // Exporting All the State Updating Functions
-export const { updateUser,updateName, loadUser, loadLocalStorage, loadCookies, logout,updateBarInfo,updateItemInfo  } = userReducer.actions
+export const { updateUser,updateName, loadUser, loadLocalStorage, loadCookies, logout,updateBarInfo  } = userReducer.actions
 export default userReducer.reducer
