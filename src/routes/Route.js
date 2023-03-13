@@ -34,6 +34,8 @@ import Contact from '../views/Dashboard/ContactUs/index.js'
 import Profilesetting from '../views/Dashboard/Profilesetting/index.js'
 import { useEffect } from 'react';
 import Addevents from '../views/Dashboard/Event/Addevents';
+import SingleMenu from '../views/Dashboard/Menu/SingleMenu';
+import SingleEvent from '../views/Dashboard/Event/SingleEvent';
 
 
 
@@ -79,8 +81,10 @@ export default function AppRoute() {
                     <Route exact path="/Dashboard/Event/Addevents" element={<Addevents />}></Route>
                     <Route exact path="/dashboard" element={<Dashboard />}></Route>
                     <Route exact path="/dashboard/menu" element={<Menu />}></Route>
+                    <Route exact path="/dashboard/singlemenu" element={<SingleMenu />}></Route>
                     <Route exact path="/dashboard/subscription" element={<Subscription />}></Route>
                     <Route exact path="/dashboard/event" element={<Event />}></Route>
+                    <Route exact path="/dashboard/singleevent" element={<SingleEvent />}></Route>
                     <Route exact path="/dashboard/feed" element={<Feed />}></Route>
                     <Route exact path="/dashboard/analytics" element={<Analytics />}></Route>
                     <Route exact path="/dashboard/promotions" element={<Promotions />}></Route>
