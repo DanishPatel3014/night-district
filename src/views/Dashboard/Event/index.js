@@ -29,12 +29,14 @@ import MainDashboard from '../MainDashboard';
 import { AiOutlineSearch, AiOutlinePlusCircle } from 'react-icons/ai';
 import { Icon } from '@chakra-ui/icons';
 import { GET, POST } from '../../../utilities/ApiProvider';
+import moment from 'moment';
 
 export default function Index() {
   
-  const [posts, setPost] = useState([]);
+  const [events, setEvents] = useState([]);
   const [Hashtags, setHashtags] = useState([]);
   const [hashtagData, sethashtagData] = useState([]);
+  const [dj, setDj] = useState([]);
   const toast = useToast();
   const [isLoading, setisLoading] = useState(false);
 
@@ -50,42 +52,55 @@ export default function Index() {
 
   useEffect(() => {
     getHastags();
-    getPosts();
+    getEvents();
+    getDJ();
   }, []);
 
-  const getPosts = async () => {
-    var response = await GET('/post');
-    setPost(response.data);
+  const getEvents = async () => {
+    var response = await GET('/event');
+    setEvents(response.data);
   };
   const getHastags = async () => {
     var response = await GET('/admin/hashtag');
     setHashtags(response.data);
   };
+  const getDJ = async () => {
+    var response = await GET('/users/type/dj');
+
+    setDj(response.data);
+  };
 
   const [Fields, setFields] = useState({
-    upload_document: {},
+    picture: {},
+    repeat : true,
+    venue : "450 Highland Ave, Salem, MA 1940"
   });
   let hastagArray = [];
   const submitForm = async () => {
     try {
       const formData = new FormData();
 
-      if (Fields.title === '' && Fields.description === '') {
-        toast({
-          status: 'error',
-          title: 'Please fill in all the fields to proceed further.',
-          duration: 7000,
-          isClosable: true,
-          position: 'bottom-left',
-        });
-        return;
-      }
 
-      formData.append('title', Fields.heading);
+      formData.append('name', Fields.name);
       formData.append('description', Fields.description);
-      formData.append('hastags', hashtagData);
+      formData.append('dj', Fields.dj);
+      formData.append('price', Fields.price);
+      formData.append('repeat', Fields.repeat);
+      formData.append('stock', Fields.stock);
+      formData.append('venue', Fields.venue);
+      var momentObj = moment(Fields.date + Fields.time, 'YYYY-MM-DDLT');
 
-      var response = await POST('/post', formData);
+      // conversion
+      var dateTime = momentObj.format('YYYY-MM-DDThh:mm:ssZ');
+
+      formData.append('date', dateTime);
+
+
+
+      var response = await POST('/event', formData);
+
+
+   
 
       toast({
         description: response.message,
@@ -95,10 +110,10 @@ export default function Index() {
         duration: 2500,
       });
 
-      setFields({
-        username: '',
-        password: '',
-      });
+      // setFields({
+      //   username: '',
+      //   password: '',
+      // });
 
       setisLoading(false);
     } catch (err) {
@@ -121,7 +136,9 @@ export default function Index() {
   };
 
   return (
+
     <>
+
       <MainDashboard>
         <Modal size={'3xl'} isCentered isOpen={isOpen} onClose={onClose}>
           {overlay}
@@ -159,7 +176,7 @@ export default function Index() {
                     onChange={e => {
                       setFields({
                         ...Fields,
-                        upload_document: e.target.value,
+                        picture : e.target.value,
                       });
                     }}
                   />
@@ -170,6 +187,12 @@ export default function Index() {
                   type="Name"
                   _placeholder={{ color: '#fff' }}
                   value={Fields.title}
+                  onChange={e => {
+                    setFields({
+                      ...Fields,
+                      name: e.target.value,
+                    });
+                  }}
                 />
                 <Textarea
                   sx={signupstyle}
@@ -180,7 +203,7 @@ export default function Index() {
                   onChange={e => {
                     setFields({
                       ...Fields,
-                      discrpition: e.target.value,
+                      description: e.target.value,
                     });
                   }}
                 ></Textarea>
@@ -206,6 +229,12 @@ export default function Index() {
                       w={'full'}
                       color={'#fff'}
                       outline={'1px solid #fff'}
+                      onChange={e => {
+                        setFields({
+                          ...Fields,
+                          date: e.target.value,
+                        });
+                      }}
                     />
                   </Box>
                   <Box w={'full'} position={'relative'}>
@@ -225,6 +254,12 @@ export default function Index() {
                       w={'full'}
                       color={'#fff'}
                       outline={'1px solid #fff'}
+                      onChange={e => {
+                        setFields({
+                          ...Fields,
+                          time: e.target.value,
+                        });
+                      }}
                     />
                   </Box>
                 </Stack>
@@ -236,7 +271,7 @@ export default function Index() {
                 >
                   <Box w={'full'} position={'relative'}>
                     <Input
-                      type={'text'}
+                      type={'number'}
                       bg={'#212121'}
                       pt={'7'}
                       pb={'6'}
@@ -244,6 +279,12 @@ export default function Index() {
                       color={'#fff'}
                       outline={'1px solid #fff'}
                       placeholder={'Price'}
+                      onChange={e => {
+                        setFields({
+                          ...Fields,
+                          price: e.target.value,
+                        });
+                      }}
                     />
                   </Box>
                   <Box w={'full'} position={'relative'}>
@@ -252,11 +293,24 @@ export default function Index() {
                       color={'#fff'}
                       outline={'1px solid #fff'}
                       placeholder="Select option"
+                      onChange={e => {
+                        setFields({
+                          ...Fields,
+                          dj: e.target.value,
+                        });
+                      }}
                     >
-                      <option value="option1">Option 1</option>
-                      <option value="option2">Option 2</option>
-                      <option value="option3">Option 3</option>
-                    </Select>
+                      
+
+                      {dj.map(e => {
+                        
+                    return (
+                      <option value={e._id}>{e.username}</option>
+                    );
+                  })}    
+                      
+                      
+                  </Select>
                   </Box>
                 </Stack>
 
@@ -339,7 +393,12 @@ export default function Index() {
                 >
                   <Box w={'full'} position={'relative'}>
                     <FormControl display="flex" alignItems="center">
-                      <Switch id="email-alerts" colorScheme="pink" />
+                      <Switch id="email-alerts" colorScheme="pink" onChange={e => {
+                       setFields({
+                          ...Fields,
+                          repeat: Fields.repeat?true:false,
+                        });
+                      }} value={Fields.repeat} />
                       <FormLabel
                         ml={'2'}
                         color={'#fff'}
@@ -355,11 +414,17 @@ export default function Index() {
                       size="md"
                       color={'#fff'}
                       outline={'1px solid #fff'}
-                      placeholder="Select option"
+                      onChange={e => {
+                        setFields({
+                          ...Fields,
+                          stock: e.target.value,
+                        });
+                      }}
                     >
-                      <option value="option1">Option 1</option>
-                      <option value="option2">Option 2</option>
-                      <option value="option3">Option 3</option>
+                      <option value="500">unlimited</option>
+                      <option value='50 '>50</option>
+                      <option value='500'>500</option>
+                      
                     </Select>
                   </Box>
                 </Stack>
@@ -367,7 +432,7 @@ export default function Index() {
             </ModalBody>
             <ModalFooter>
               <Stack direction={'row'} w={'full'} justifyContent={'center'}>
-                <Button bg={'pHeading.100'} color={'#fff'} px={'14'}>
+                <Button onClick={() => submitForm()}  bg={'pHeading.100'} color={'#fff'} px={'14'}>
                   Post
                 </Button>
                 <Button onClick={onClose}>Discard</Button>
@@ -385,7 +450,8 @@ export default function Index() {
               >
                 Live Events
               </CustomHeading>
-            </Box>
+            </Box>\
+            {/*  ADD EVENT HERE */}
             <Box>
               <Button
                 bg={'transparent'}
@@ -408,91 +474,61 @@ export default function Index() {
                 Add New Events
               </Button>
             </Box>
+            
           </Stack>
+
+         
+
           <Stack flexWrap={'wrap'} direction={'row'} gap={'4'}>
-            <Box backgroundImage={Event1} w={'346px'} py={'4'}>
-              <Box bg={'pHeading.100'} w={'100px'} py={'1'} mb={'6'}>
-                <CustomPara marginBottom={'0'} textAlign={'center'}>
-                  Today
-                </CustomPara>
-              </Box>
-              <Stack px={'4'} mb={'24'}>
-                <CustomHeading
-                  color={'#fff'}
-                  fontSize={'25px'}
-                  textAlign={'left'}
-                  mb={'0'}
-                >
-                  Monday Night
-                </CustomHeading>
-                <CustomPara fontSize={'14px'}>
-                  Lorem ipsum dolor sit amet, consectetur elit, sed do eiusmod
-                  tempor incididunt ut labore et dolore magna aliqua.
-                </CustomPara>
-              </Stack>
-              <Stack
-                px={'4'}
-                direction={'row'}
-                justifyContent={'space-between'}
-                alignItems={'center'}
-              >
-                <Box>
-                  <CustomHeading
-                    mb={'0'}
-                    color={'#fff'}
-                    fontSize={'20px'}
-                    textAlign={'left'}
-                  >
-                    Sold Out
-                  </CustomHeading>
-                </Box>
-                <Box bg={'#ff4764'} px={'2'}>
-                  <CustomPara marginBottom={'0'}>LIVE</CustomPara>
-                </Box>
-              </Stack>
+          {events &&  events[0].live.map((e) =>{
+            return   <Box backgroundImage={Event1} w={'346px'} py={'4'}>
+            <Box bg={'pHeading.100'} w={'100px'} py={'1'} mb={'6'}>
+              <CustomPara marginBottom={'0'} textAlign={'center'}>
+                Today
+              </CustomPara>
             </Box>
-            <Box backgroundImage={Event1} w={'346px'} py={'4'}>
-              <Box bg={'pHeading.100'} w={'100px'} py={'1'} mb={'6'}>
-                <CustomPara marginBottom={'0'} textAlign={'center'}>
-                  Today
-                </CustomPara>
-              </Box>
-              <Stack px={'4'} mb={'24'}>
-                <CustomHeading
-                  color={'#fff'}
-                  fontSize={'25px'}
-                  textAlign={'left'}
-                  mb={'0'}
-                >
-                  Monday Night
-                </CustomHeading>
-                <CustomPara fontSize={'14px'}>
-                  Lorem ipsum dolor sit amet, consectetur elit, sed do eiusmod
-                  tempor incididunt ut labore et dolore magna aliqua.
-                </CustomPara>
-              </Stack>
-              <Stack
-                px={'4'}
-                direction={'row'}
-                justifyContent={'space-between'}
-                alignItems={'center'}
+            <Stack px={'4'} mb={'24'}>
+              <CustomHeading
+                color={'#fff'}
+                fontSize={'25px'}
+                textAlign={'left'}
+                mb={'0'}
               >
-                <Box>
-                  <CustomHeading
-                    mb={'0'}
-                    color={'#fff'}
-                    fontSize={'20px'}
-                    textAlign={'left'}
-                  >
-                    Sold Out
-                  </CustomHeading>
-                </Box>
-                <Box bg={'#ff4764'} px={'2'}>
-                  <CustomPara marginBottom={'0'}>LIVE</CustomPara>
-                </Box>
-              </Stack>
-            </Box>
+                {e.name}
+              </CustomHeading>
+              <CustomPara fontSize={'14px'}>
+              {e.description}
+              </CustomPara>
+            </Stack>
+            <Stack
+              px={'4'}
+              direction={'row'}
+              justifyContent={'space-between'}
+              alignItems={'center'}
+            >
+              <Box>
+                <CustomHeading
+                  mb={'0'}
+                  color={'#fff'}
+                  fontSize={'20px'}
+                  textAlign={'left'}
+                >
+                  Sold Out
+                </CustomHeading>
+              </Box>
+              <Box bg={'#ff4764'} px={'2'}>
+                <CustomPara marginBottom={'0'}>LIVE</CustomPara>
+              </Box>
+            </Stack>
+          </Box>
+          })}
+          
+          
           </Stack>
+          
+      
+          {/* Up comming Event */}
+
           <Stack>
             <Box>
               <CustomHeading
@@ -500,86 +536,109 @@ export default function Index() {
                 color={'#fff'}
                 textAlign={'left'}
               >
-                Today's Events
+               Today's Events
               </CustomHeading>
             </Box>
             <Stack  flexWrap={'wrap'} direction={'row'} gap={'4'}>
-              <Box backgroundImage={Event1} w={'346px'} py={'4'}>
-                <Box bg={'pHeading.100'} w={'100px'} py={'1'} mb={'6'}>
-                  <CustomPara marginBottom={'0'} textAlign={'center'}>
-                    Today
-                  </CustomPara>
-                </Box>
-                <Stack px={'4'} mb={'24'}>
-                  <CustomHeading
-                    color={'#fff'}
-                    fontSize={'25px'}
-                    textAlign={'left'}
-                    mb={'0'}
-                  >
-                    Monday Night
-                  </CustomHeading>
-                  <CustomPara fontSize={'14px'}>
-                    Lorem ipsum dolor sit amet, consectetur elit, sed do eiusmod
-                    tempor incididunt ut labore et dolore magna aliqua.
-                  </CustomPara>
-                </Stack>
-                <Stack
-                  px={'4'}
-                  direction={'row'}
-                  justifyContent={'space-between'}
-                  alignItems={'center'}
+            {events && events[0].today.map((e) =>{
+            return   <Box backgroundImage={Event1} w={'346px'} py={'4'}>
+            <Box bg={'pHeading.100'} w={'100px'} py={'1'} mb={'6'}>
+              <CustomPara marginBottom={'0'} textAlign={'center'}>
+                Today
+              </CustomPara>
+            </Box>
+            <Stack px={'4'} mb={'24'}>
+              <CustomHeading
+                color={'#fff'}
+                fontSize={'25px'}
+                textAlign={'left'}
+                mb={'0'}
+              >
+                {e.name}
+              </CustomHeading>
+              <CustomPara fontSize={'14px'}>
+              {e.description}
+              </CustomPara>
+            </Stack>
+            <Stack
+              px={'4'}
+              direction={'row'}
+              justifyContent={'space-between'}
+              alignItems={'center'}
+            >
+              <Box>
+                <CustomHeading
+                  mb={'0'}
+                  color={'#fff'}
+                  fontSize={'20px'}
+                  textAlign={'left'}
                 >
-                  <Box>
-                    <CustomHeading
-                      mb={'0'}
-                      color={'#fff'}
-                      fontSize={'20px'}
-                      textAlign={'left'}
-                    >
-                      Sold Out
-                    </CustomHeading>
-                  </Box>
-                </Stack>
+                  Sold Out
+                </CustomHeading>
               </Box>
-              <Box backgroundImage={Event1} w={'346px'} py={'4'}>
-                <Box bg={'pHeading.100'} w={'100px'} py={'1'} mb={'6'}>
-                  <CustomPara marginBottom={'0'} textAlign={'center'}>
-                    Today
-                  </CustomPara>
-                </Box>
-                <Stack px={'4'} mb={'24'}>
-                  <CustomHeading
-                    color={'#fff'}
-                    fontSize={'25px'}
-                    textAlign={'left'}
-                    mb={'0'}
-                  >
-                    Monday Night
-                  </CustomHeading>
-                  <CustomPara fontSize={'14px'}>
-                    Lorem ipsum dolor sit amet, consectetur elit, sed do eiusmod
-                    tempor incididunt ut labore et dolore magna aliqua.
-                  </CustomPara>
-                </Stack>
-                <Stack
-                  px={'4'}
-                  direction={'row'}
-                  justifyContent={'space-between'}
-                  alignItems={'center'}
+              <Box bg={'#ff4764'} px={'2'}>
+                <CustomPara marginBottom={'0'}>LIVE</CustomPara>
+              </Box>
+            </Stack>
+          </Box>
+          })}
+            </Stack>
+          </Stack>
+
+          <Stack>
+            <Box>
+              <CustomHeading
+                fontSize={'30px'}
+                color={'#fff'}
+                textAlign={'left'}
+              >
+                Upcomming Events
+              </CustomHeading>
+            </Box>
+            <Stack  flexWrap={'wrap'} direction={'row'} gap={'4'}>
+            
+            {events && events[0].upcomming.map((e) =>{
+            return   <Box backgroundImage={Event1} w={'346px'} py={'4'}>
+            <Box bg={'pHeading.100'} w={'100px'} py={'1'} mb={'6'}>
+              <CustomPara marginBottom={'0'} textAlign={'center'}>
+                Today
+              </CustomPara>
+            </Box>
+            <Stack px={'4'} mb={'24'}>
+              <CustomHeading
+                color={'#fff'}
+                fontSize={'25px'}
+                textAlign={'left'}
+                mb={'0'}
+              >
+                {e.name}
+              </CustomHeading>
+              <CustomPara fontSize={'14px'}>
+              {e.description}
+              </CustomPara>
+            </Stack>
+            <Stack
+              px={'4'}
+              direction={'row'}
+              justifyContent={'space-between'}
+              alignItems={'center'}
+            >
+              <Box>
+                <CustomHeading
+                  mb={'0'}
+                  color={'#fff'}
+                  fontSize={'20px'}
+                  textAlign={'left'}
                 >
-                  <Box>
-                    <CustomHeading
-                      mb={'0'}
-                      color={'#fff'}
-                      fontSize={'20px'}
-                      textAlign={'left'}
-                    >
-                      Sold Out
-                    </CustomHeading>
-                  </Box>
-                </Stack>
+                  Sold Out
+                </CustomHeading>
               </Box>
+              <Box bg={'#ff4764'} px={'2'}>
+                <CustomPara marginBottom={'0'}>LIVE</CustomPara>
+              </Box>
+            </Stack>
+          </Box>
+          })}
             </Stack>
           </Stack>
         </Stack>

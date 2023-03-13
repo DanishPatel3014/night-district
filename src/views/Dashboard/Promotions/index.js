@@ -19,6 +19,8 @@ import {
   Input,
   Textarea,
   Checkbox,
+  Radio,
+  RadioGroup,
   Select,
   Switch,
   RangeSlider,
@@ -45,6 +47,8 @@ export default function Index() {
   const [posts, setPost] = useState([]);
   const [Hashtags, setHashtags] = useState([]);
   const [hashtagData, sethashtagData] = useState([]);
+  const [categories, setCategories] = useState([]);
+  const [catItems, setCatItems] = useState([]);
   const toast = useToast();
   const [isLoading, setisLoading] = useState(false);
 
@@ -59,6 +63,7 @@ export default function Index() {
   const [overlay, setOverlay] = React.useState(<OverlayOne />);
 
   useEffect(() => {
+    getCategories();
     getHastags();
     getPosts();
   }, []);
@@ -71,6 +76,19 @@ export default function Index() {
     var response = await GET('/admin/hashtag');
     setHashtags(response.data);
   };
+  const getCategories = async () => {
+    var response = await GET('/admin/parentCategory');
+    setCategories(response.data);
+  };
+
+  function itemExists(value) {
+    return categories.some(function(el) {
+      if(el.name === value)
+      {
+        setCatItems(el.items)
+      }
+    }); 
+  }
 
   const [Fields, setFields] = useState({
     upload_document: {},
@@ -150,6 +168,12 @@ export default function Index() {
                   type="Name"
                   _placeholder={{ color: '#fff' }}
                   value={Fields.title}
+                  onChange={e => {
+                    setFields({
+                      ...Fields,
+                      title: e.target.value,
+                    });
+                  }}
                 />
 
                 <Stack
@@ -175,6 +199,12 @@ export default function Index() {
                         w={'full'}
                         color={'#fff'}
                         outline={'1px solid #fff'}
+                        onChange={e => {
+                          setFields({
+                            ...Fields,
+                            from: e.target.value,
+                          });
+                        }}
                       />
                     </Box>
                     <Box w={'full'} position={'relative'}>
@@ -194,6 +224,12 @@ export default function Index() {
                         w={'full'}
                         color={'#fff'}
                         outline={'1px solid #fff'}
+                        onChange={e => {
+                          setFields({
+                            ...Fields,
+                            to: e.target.value,
+                          });
+                        }}
                       />
                     </Box>
                   </Stack>
@@ -215,6 +251,12 @@ export default function Index() {
                         w={'full'}
                         color={'#fff'}
                         outline={'1px solid #fff'}
+                        onChange={e => {
+                          setFields({
+                            ...Fields,
+                            fromTime: e.target.value,
+                          });
+                        }}
                       />
                     </Box>
                     <Box w={'full'} position={'relative'}>
@@ -234,6 +276,12 @@ export default function Index() {
                         w={'full'}
                         color={'#fff'}
                         outline={'1px solid #fff'}
+                        onChange={e => {
+                          setFields({
+                            ...Fields,
+                            toTime: e.target.value,
+                          });
+                        }}
                       />
                     </Box>
                   </Stack>
@@ -320,9 +368,9 @@ export default function Index() {
                   flexWrap={'wrap'}
                   color={'#fff'}
                 >
-                  {Hashtags.map(e => {
+                  {categories.map(e => {
                     return (
-                      <Checkbox
+                      <RadioGroup
                       p={'3px'}
                         border={'0px solid #fff'}
                         position={'relative'}
@@ -331,48 +379,58 @@ export default function Index() {
                         className="chckbox"
                         value={e._id}
                         onChange={e => {
-                          hashtagData.push(e.target.value);
-                          sethashtagData(hashtagData);
+                          setFields({
+                            ...Fields,
+                            cat: e,
+                          });
+                          alert(e);
+                          itemExists(Fields.cat)
                         }}
                       >
                         <Stack borderRadius={'6'} justifyContent={'right'} alignItems={'end'}  w={'120px'}
                         height={'100px'} backgroundSize={'cover'} backgroundImage={Cat1} direction={'row'}>
-                          <Text>{e.name}</Text>
+                            <Radio value={e.name} >{e.name}</Radio>
+                 
                         </Stack>
-                      </Checkbox>
+                      </RadioGroup>
                     );
                   })}
                 </Stack>
-                <Stack
-                  direction={'row'}
-                  gap={'3'}
-                  spacing={'0'}
-                  flexWrap={'wrap'}
-                  color={'#fff'}
-                >
-                  {Hashtags.map(e => {
-                    return (
-                      <Checkbox
-                      p={'3px'}
-                        border={'0px solid #fff'}
-                        position={'relative'}
-                        borderRadius={'6'}
+                {
+                    catItems.map((e) =>{
+                      return <Stack
+                      direction={'row'}
+                      gap={'3'}
                       spacing={'0'}
-                        className="chckbox"
-                        value={e._id}
-                        onChange={e => {
-                          hashtagData.push(e.target.value);
-                          sethashtagData(hashtagData);
-                        }}
-                      >
-                        <Stack borderRadius={'6'} justifyContent={'right'} alignItems={'end'}  w={'120px'}
-                        height={'100px'} backgroundSize={'cover'} backgroundImage={MenuItems} direction={'row'}>
-                          <Text>{e.name}</Text>
-                        </Stack>
-                      </Checkbox>
-                    );
-                  })}
-                </Stack>
+                      flexWrap={'wrap'}
+                      color={'#fff'}
+                    >
+                      {Hashtags.map(e => {
+                        return (
+                          <Checkbox
+                          p={'3px'}
+                            border={'0px solid #fff'}
+                            position={'relative'}
+                            borderRadius={'6'}
+                          spacing={'0'}
+                            className="chckbox"
+                            value={e._id}
+                            onChange={e => {
+                              hashtagData.push(e.target.value);
+                              sethashtagData(hashtagData);
+                            }}
+                          >
+                            <Stack borderRadius={'6'} justifyContent={'right'} alignItems={'end'}  w={'120px'}
+                            height={'100px'} backgroundSize={'cover'} backgroundImage={MenuItems} direction={'row'}>
+                              <Text>{e.name}</Text>
+                            </Stack>
+                          </Checkbox>
+                        );
+                      })}
+                    </Stack>
+                    })
+                }
+                
               </Stack>
             </ModalBody>
             <ModalFooter>

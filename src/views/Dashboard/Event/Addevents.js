@@ -50,6 +50,9 @@ export default function Addevents() {
       const submitForm = async () => {
         try {
           const formData = new FormData();
+
+          console.log(Fields.setFields);
+          debugger;
     
           if (Fields.title === '' && Fields.description === '') {
             toast({
@@ -155,6 +158,12 @@ export default function Addevents() {
                   type="Name"
                   _placeholder={{ color: '#fff' }}
                   value={Fields.title}
+                  onChange={e => {
+                    setFields({
+                      ...Fields,
+                      name: e.target.value,
+                    });
+                  }}
                 />
                 <Textarea
                   sx={signupstyle}
@@ -192,6 +201,12 @@ export default function Addevents() {
                       w={'full'}
                       color={'#fff'}
                       outline={'1px solid #fff'}
+                      onChange={e => {
+                        setFields({
+                          ...Fields,
+                          date: e.target.value,
+                        });
+                      }}
                     />
                   </Box>
                   <Box w={'full'} position={'relative'}>
@@ -212,6 +227,12 @@ export default function Addevents() {
                       w={'full'}
                       color={'#fff'}
                       outline={'1px solid #fff'}
+                      onChange={e => {
+                        setFields({
+                          ...Fields,
+                          time: e.target.value,
+                        });
+                      }}
                     />
                   </Box>
                 </Stack>
@@ -232,6 +253,12 @@ export default function Addevents() {
                       color={'#fff'}
                       outline={'1px solid #fff'}
                       placeholder={'Price'}
+                      onChange={e => {
+                        setFields({
+                          ...Fields,
+                          price: e.target.value,
+                        });
+                      }}
                     />
                   </Box>
                   <Box w={'full'} position={'relative'}>
@@ -242,6 +269,12 @@ export default function Addevents() {
                       color={'#fff'}
                       outline={'1px solid #fff'}
                       placeholder="Select option"
+                      onChange={e => {
+                        setFields({
+                          ...Fields,
+                          ticket: e.target.value,
+                        });
+                      }}
                     >
                       <option value="option1">Option 1</option>
                       <option value="option2">Option 2</option>
@@ -329,7 +362,14 @@ export default function Addevents() {
                 >
                   <Box w={'full'} position={'relative'}>
                     <FormControl display="flex" alignItems="center">
-                      <Switch id="email-alerts" colorScheme="pink" />
+                      <Switch id="email-alerts" colorScheme="pink"  
+                        onChange={e => {
+                          setFields({
+                            ...Fields,
+                            repeat: e.target.value,
+                          });
+                        }}
+                      />
                       <FormLabel
                         ml={'2'}
                         color={'#fff'}
@@ -346,6 +386,12 @@ export default function Addevents() {
                       color={'#fff'}
                       outline={'1px solid #fff'}
                       placeholder="Select option"
+                      onChange={e => {
+                        setFields({
+                          ...Fields,
+                          repeat: e.target.value,
+                        });
+                      }}
                     >
                       <option value="option1">Option 1</option>
                       <option value="option2">Option 2</option>
