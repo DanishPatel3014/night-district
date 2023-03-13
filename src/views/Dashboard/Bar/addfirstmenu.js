@@ -114,34 +114,95 @@ export default function Addfirstmenu() {
                             </FormControl>
                           </Stack>
                           <Stack direction={'row'} flexWrap={'wrap'} gap={'3'}>
-                            <Box>
-                              <Img
-                                w={'182px'}
-                                height={'150px'}
-                                borderRadius={'6'}
-                                src={menuimg}
-                              />
-                              <CustomPara marginBottom={'0'}>Knob Creek</CustomPara>
-                            </Box>
-                            
-                            <Box
-                              w={'186px'}
-                              height={'140px'}
-                              borderRadius={'6'}
-                              border={'1px dashed #fff'}
-                              display={'flex'}
-                              alignItems={'center'}
-                              textAlign={'center'}
-                              justifyContent={'center'}
+                            <Stack
+                              bg={'#2c2a2a'}
+                              boxShadow="base"
+                              p="6"
+                              rounded="md"
                             >
-                              <Link as={ReactLink} to={'/'}>
-                                <Icon
-                                  fontSize={'40px'}
-                                  color={'#fff'}
-                                  as={AiOutlinePlusCircle}
+                              <Stack>
+                                <Img
+                                  height={'150px'}
+                                  borderRadius={'6'}
+                                  src={menuimg}
                                 />
-                              </Link>
-                            </Box>
+                                <CustomPara marginBottom={'0'}>
+                                  Knob Creek
+                                </CustomPara>
+                              </Stack>
+                              <Stack gap={'2'}>
+                                <FormControl>
+                                  <FormLabel>1.50z</FormLabel>
+                                  <Input
+                                    outline={'1px solid #fff'}
+                                    type="email"
+                                  />
+                                </FormControl>
+                                <FormControl>
+                                  <FormLabel>Shot</FormLabel>
+                                  <Input
+                                    outline={'1px solid #fff'}
+                                    type="email"
+                                  />
+                                </FormControl>
+                                <FormControl>
+                                  <FormLabel>Neat/Rocks</FormLabel>
+                                  <Input
+                                    outline={'1px solid #fff'}
+                                    type="email"
+                                  />
+                                </FormControl>
+                              </Stack>
+                            </Stack>
+
+                            <Stack
+                              bg={'#2c2a2a'}
+                              boxShadow="base"
+                              p="6"
+                              rounded="md"
+                            >
+                              <Stack
+                                
+                                height={'140px'}
+                                borderRadius={'6'}
+                                border={'1px dashed #fff'}
+                                display={'flex'}
+                                alignItems={'center'}
+                                textAlign={'center'}
+                                justifyContent={'center'}
+                              >
+                                <Link as={ReactLink} to={'/'}>
+                                  <Icon
+                                    fontSize={'40px'}
+                                    color={'#fff'}
+                                    as={AiOutlinePlusCircle}
+                                  />
+                                </Link>
+                              </Stack>
+                              <Stack gap={'2'}>
+                                <FormControl>
+                                  <FormLabel>1.50z</FormLabel>
+                                  <Input
+                                    outline={'1px solid #fff'}
+                                    type="email"
+                                  />
+                                </FormControl>
+                                <FormControl>
+                                  <FormLabel>Shot</FormLabel>
+                                  <Input
+                                    outline={'1px solid #fff'}
+                                    type="email"
+                                  />
+                                </FormControl>
+                                <FormControl>
+                                  <FormLabel>Neat/Rocks</FormLabel>
+                                  <Input
+                                    outline={'1px solid #fff'}
+                                    type="email"
+                                  />
+                                </FormControl>
+                              </Stack>
+                            </Stack>
                           </Stack>
                         </Stack>
                       </AccordionPanel>

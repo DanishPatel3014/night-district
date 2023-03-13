@@ -31,6 +31,7 @@ import { Icon } from '@chakra-ui/icons';
 import { GET, POST } from '../../../utilities/ApiProvider';
 
 export default function Index() {
+  
   const [posts, setPost] = useState([]);
   const [Hashtags, setHashtags] = useState([]);
   const [hashtagData, sethashtagData] = useState([]);
