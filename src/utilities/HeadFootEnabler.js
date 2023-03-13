@@ -7,7 +7,8 @@ export function HeadFootEnabler(location) {
     location.pathname.split('/')[2].toLowerCase() === 'payment' ||
     location.pathname.split('/')[2].toLowerCase() === 'profile' ||
     location.pathname.split('/')[2].toLowerCase() === 'menu' ||
-    location.pathname.split('/')[2].toLowerCase() === 'bar' 
+    location.pathname.split('/')[2].toLowerCase() === 'bar'  ||
+    location.pathname.split('/')[2].toLowerCase() === 'event' 
   )
      {
     document.getElementById('Footer').style.display = 'none';

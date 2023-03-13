@@ -144,6 +144,10 @@ span.chakra-checkbox__control[data-checked]
   opacity: 0;
   display: none;
 }
+option
+{
+  background-color: #000 !important;
+}
 
 /* @media (max-width: 767px) {
   .footerLinks a{font-size: 14px;margin-top: 10px !important;}
